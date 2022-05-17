@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# <templetter(テンプレター)>
 
-Things you may want to cover:
+## サイト概要
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+<手書きフォントを使用して手紙を郵送まで行なうサービス>
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+<令和、コロナ禍の今の時代だからこそ、あえて手紙というツールで気持ちや誠実さを伝えられると思う反面、
+手紙を書くことは文章構成、時候の挨拶、文字の綺麗さ、郵送の手間など、さまざまな面において難易度が高いので、
+このようなサービスがあれば手紙を送るハードルが下がるのではと思いこのテーマにしました。>
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+<２０〜５０代の働く忙しい人々>
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+<家族宛（父の日、母の日、結婚の挨拶、感謝）、友人宛（結婚式友人代表スピーチ、誕生日）、仕事（お詫び、お礼）など>
 
-* ...
+## 設計書
+
+<...>
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
