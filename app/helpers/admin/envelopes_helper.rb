@@ -1,0 +1,2 @@
+module Admin::EnvelopesHelper
+end
