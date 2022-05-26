@@ -1,7 +1,8 @@
 require "test_helper"
 
 class Public::ItemsChoicesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get index" do
+    get public_items_choices_index_url
+    assert_response :success
+  end
 end
