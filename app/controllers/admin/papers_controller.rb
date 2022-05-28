@@ -17,6 +17,9 @@ class Admin::PapersController < ApplicationController
   end
 
   def destroy
+    @paper = Paper.find(params[:id])
+    @paper.delete
+    redirect_to admin_items_path
   end
 
   def paper_params

@@ -1,2 +1,10 @@
-<h1>Admin::Articles#edit</h1>
-<p>Find me in app/views/admin/articles/edit.html.erb</p>
+<h2>文章編集</h2>
+
+<%= form_with model: @article, url: admin_article_path(@article.id) do |f| %>
+  <h4>文章テンプレート名</h4>
+  <%= f.text_field :name %>
+  <h4>文章内容</h4>
+  <%= f.text_area :content %>
+
+  <%= f.submit '変更を保存' %>
+<% end %>

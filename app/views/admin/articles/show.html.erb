@@ -5,10 +5,15 @@
 
 <h2>文章内容詳細</h2>
 
-  <h4>文章名</h4>
+  <h4>文章ID</h4>
+  <p><%= @article.id %></p>
+  <h4>文章テンプレート名</h4>
   <p><%= @article.name %></p>
   <h4>文章内容</h4>
   <p><%= @article.content %></p>
-  
-  
+
+
+<button type="button" class="btn btn-outline-primary"><%= link_to "編集する", edit_admin_article_path(@article.id) %></button>
+
+
 
