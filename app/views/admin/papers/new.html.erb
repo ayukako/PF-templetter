@@ -1,0 +1,20 @@
+<h2>便箋新規登録</h2>
+
+  <% if @paper.errors.any? %>
+  <%= @paper.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @paper.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+<%= form_with model: @paper, url: admin_papers_path do |f| %>
+
+  <h4>便箋画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+  <h4>便箋名</h4>
+  <%= f.text_field :name %>
+
+  <%= f.submit '新規登録' %>
+<% end %>

@@ -1,0 +1,20 @@
+<h2>封筒新規登録</h2>
+
+  <% if @envelope.errors.any? %>
+  <%= @envelope.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @envelope.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+<%= form_with model: @envelope, url: admin_envelopes_path do |f| %>
+
+  <h4>封筒画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+  <h4>封筒名</h4>
+  <%= f.text_field :name %>
+
+  <%= f.submit '新規登録' %>
+<% end %>
