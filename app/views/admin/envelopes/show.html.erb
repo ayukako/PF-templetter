@@ -1,2 +1,16 @@
-<h1>Admin::Envelopes#show</h1>
-<p>Find me in app/views/admin/envelopes/show.html.erb</p>
+
+  <div class='containner'>
+  <div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+<h2>封筒詳細</h2>
+
+  <%= image_tag @envelope.image, size: "300x200" %>
+
+  <h4>封筒ID</h4>
+  <p><%= @envelope.id %></p>
+  <h4>封筒名</h4>
+  <p><%= @envelope.name %></p>
+
+
+<td><%= link_to "削除する", admin_envelope_path(@envelope.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>

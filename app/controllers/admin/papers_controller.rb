@@ -4,6 +4,7 @@ class Admin::PapersController < ApplicationController
   end
 
   def show
+    @paper = Paper.find(params[:id])
   end
 
   def create

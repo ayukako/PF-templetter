@@ -13,11 +13,12 @@ class Admin::FontsController < ApplicationController
   end
 
   def show
+    @font = Font.find(params[:id])
   end
 
   def destroy
   end
-
+ 
   def fonts_params
     params.require(:font).permit(:name, :image)
   end

@@ -13,9 +13,13 @@ class Admin::EnvelopesController < ApplicationController
   end
 
   def show
+    @envelope = Envelope.find(params[:id])
   end
 
   def destroy
+    @envelope = Envelope.find(params[:id])
+    @envelope.delete
+    redirect_to admin_items_path
   end
 
   def envelope_params
