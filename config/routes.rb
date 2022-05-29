@@ -19,6 +19,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :public do
     get 'homes/top'
+    root to: "homes#top"
    end
 
   namespace :admin do
