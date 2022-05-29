@@ -1,21 +1,12 @@
 <h2>文章テンプレート(内容）新規登録</h2>
 
-  <% if @article.errors.any? %>
-  <%= @article.errors.count %>errors prohibited this obj from being saved:
-  <ul>
-    <% @article.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-  <% end %>
-
 <%= form_with model: @article, url: admin_articles_path do |f| %>
 
   <h4>文章テンプレート名</h4>
   <%= f.text_field :name %>
 
   <h4>文章内容</h4>
-  <%= f.text_field :content %>
+  <%= f.text_area :content %>
 
   <%= f.submit '新規登録' %>
 <% end %>

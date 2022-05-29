@@ -1,2 +1,15 @@
-<h1>Admin::Fonts#show</h1>
-<p>Find me in app/views/admin/fonts/show.html.erb</p>
+
+  <div class='containner'>
+  <div class='row'>
+  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
+<h2>フォント詳細</h2>
+
+  <%= image_tag @font.image, size: "200x200" %>
+  <h4>フォントID</h4>
+  <p><%= @font.id %></p>
+  <h4>フォント名</h4>
+  <p><%= @font.name %></p>
+
+
+<td><%= link_to "削除する", admin_font_path(@font.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>

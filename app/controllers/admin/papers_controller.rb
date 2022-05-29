@@ -4,6 +4,7 @@ class Admin::PapersController < ApplicationController
   end
 
   def show
+    @paper = Paper.find(params[:id])
   end
 
   def create
@@ -16,6 +17,9 @@ class Admin::PapersController < ApplicationController
   end
 
   def destroy
+    @paper = Paper.find(params[:id])
+    @paper.delete
+    redirect_to admin_items_path
   end
 
   def paper_params

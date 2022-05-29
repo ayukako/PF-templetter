@@ -13,12 +13,16 @@ class Admin::FontsController < ApplicationController
   end
 
   def show
+    @font = Font.find(params[:id])
   end
 
   def destroy
+    @font = Font.find(params[:id])
+    @font.delete
+    redirect_to admin_items_path
   end
 
-  def fonts_params
+  def font_params
     params.require(:font).permit(:name, :image)
   end
 end
