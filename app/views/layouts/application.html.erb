@@ -41,7 +41,7 @@
               <%= link_to "マイページ", public_customers_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '商品一覧', public_items_choices_path, class: 'nav-link text-dark' %>
+              <%= link_to '商品一覧', public_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to 'カート', public_items_path, class: 'nav-link text-dark' %>
@@ -54,7 +54,7 @@
               <%= link_to 'トップ', public_root_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '商品一覧', public_items_choices_path, class: 'nav-link text-dark' %>
+              <%= link_to '商品一覧', public_items__path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
@@ -70,6 +70,7 @@
       </nav>
     </header>
     <main class="mb-auto">
-    <%= yield %>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -2,6 +2,13 @@ class Public::ItemsController < ApplicationController
   def new
   end
 
+  def index
+    @envelopes = Envelope.all
+    @papers = Paper.all
+    @fonts = Font.all
+    @articles = Article.all
+  end
+
   def show
   end
 
