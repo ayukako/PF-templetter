@@ -1,5 +1,10 @@
 class Public::ItemsController < ApplicationController
   def new
+    @item = Item.new
+    @envelope = Envelope.all
+    @paper = Paper.all
+    @font = Font.all
+    @article = Article.all
   end
 
   def index
@@ -9,7 +14,7 @@ class Public::ItemsController < ApplicationController
     @articles = Article.all
   end
 
-  def show
+  def confirm
   end
 
   def edit

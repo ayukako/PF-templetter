@@ -38,9 +38,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :public do
-    resources :items, except: [:destroy] do
+    resources :items, except: [:show, :destroy] do
       collection do
         get :destroy_all
+        post :confirm
       end
     end
     resource :customers, only: [:show] do

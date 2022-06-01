@@ -1,2 +1,14 @@
-<h1>Public::Items#new</h1>
-<p>Find me in app/views/public/items/new.html.erb</p>
+<div class= "row" >
+  <div class= "container">
+    <h2>商品一覧</h2>
+      <%= form_with url:new_public_item_path do |f| %>
+        <%= select_tag 'name', options_from_collection_for_select(@envelope, :id, :name , 1) %>
+        <%= select_tag 'name', options_from_collection_for_select(@paper, :id, :name , 1) %>
+        <%= select_tag 'name', options_from_collection_for_select(@font, :id, :name , 1) %>
+        <%= select_tag 'name', options_from_collection_for_select(@article, :id, :name , 1) %>
+      <%= f.submit '送信'%>
+
+    <% end %>
+
+  </div>
+</div>
