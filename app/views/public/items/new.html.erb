@@ -2,13 +2,41 @@
   <div class= "container">
     <h2>商品一覧</h2>
       <%= form_with url:new_public_item_path do |f| %>
-        <%= select_tag 'name', options_from_collection_for_select(@envelope, :id, :name , 1) %>
-        <%= select_tag 'name', options_from_collection_for_select(@paper, :id, :name , 1) %>
-        <%= select_tag 'name', options_from_collection_for_select(@font, :id, :name , 1) %>
-        <%= select_tag 'name', options_from_collection_for_select(@article, :id, :name , 1) %>
+        <%= f.collection_select :envelope_id, @envelopes, :id, :name, :include_blank => true%>
+        <%= f.collection_select :paper_id,  @papers, :id, :name, :include_blank => true %>
+        <%= f.collection_select :font_id, @fonts, :id, :name, :include_blank => true%>
+        <%= f.collection_select :article_id,  @articles, :content, :name, :include_blank => true %>
       <%= f.submit '送信'%>
-
     <% end %>
 
   </div>
 </div>
+
+<html>
+    <head>
+        <title>templetter</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=320, minimum-scale=1.0, maximum-scale=2.0">
+    </head>
+
+    <body>
+        <div style="editorwrapper">
+            <div class="editor">
+                <p style="background-color:Black; color:white;">入力フォーム</p>
+                <form name="js">
+                    <p>手紙の内容</p>
+                    <textarea id="liveeditor" name="htmlbody" rows="10" cols="80"></textarea>
+                </form>
+            </div>
+
+            <div class="preview">
+                <p style="background-color:Black; color:white;">プレビュー</p>
+                <div id="livepreview" class="livepreview"></div>
+            </div>
+
+        </div>
+    </body>
+
+    <button type="button" class="btn btn-success"><%= link_to "手紙を一時保存する", confirm_public_items_path %></button>
+</html

@@ -41,7 +41,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, except: [:show, :destroy] do
       collection do
         get :destroy_all
-        post :confirm
+        get :confirm
       end
     end
     resource :customers, only: [:show] do

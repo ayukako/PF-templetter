@@ -1,1 +1,85 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+            *{
+                font-family: Meiryo;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .subtitle {
+                width: 100%;
+            }
+            // .container{
+            //     display: flex;
+            //     flex-wrap: wrap;
+            // }
+
+            // .flex{
+            //     width: 350px;
+            // }
+            // .payment {
+            //     width: 100%;
+            // }
+
+            #liveeditor{
+                margin: 10px;
+            }
+
+            .bottomspace{
+                margin-bottom: 20px;
+            }
+
+            .editorwrapper{
+
+            }
+
+            .editor{
+                float: left;
+                width: 50%;
+                height: 70%;
+            }
+
+            .livepreview {
+                width: 364px; // 182mm
+                height: 514px; // 257mm
+                // B5サイズ
+             }
+
+            .preview{
+                float: right;
+                width: 50%;
+                height: 70%;
+                background-color: DDDDDD;
+
+            }
+
+            .button{
+                border: 1px solid plum;
+                color: black;
+                line-height: 50px;
+                width: 200px;
+                margin: 20px;
+                background-color: aliceblue;
+                padding: 5px 10px 5px 10px;
+                transition: 0.3s;
+            }
+
+            .button:hover{
+                border: 1px solid mediumpurple;
+                color: white;
+                transition: 0.3s;
+                background-color: mediumpurple;
+            }
+
+            .footer{
+                font-size:6px;
+                font-weight: 100;
+                position: fixed;
+                color: white;
+                background-color: #444444;
+                width: 100%;
+                padding: 5px 10px 5px 10px;
+                bottom: 0;
+            }

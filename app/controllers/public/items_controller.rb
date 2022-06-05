@@ -1,10 +1,14 @@
 class Public::ItemsController < ApplicationController
   def new
     @item = Item.new
-    @envelope = Envelope.all
-    @paper = Paper.all
-    @font = Font.all
-    @article = Article.all
+    @envelopes = Envelope.all
+    @papers = Paper.all
+    @fonts = Font.all
+    @articles = Article.all
+    # @envelope = Envelope.find(params[envelope_id])
+    # @paper = Paper.find(params[paper_id])
+    # @font = Font.find(params[font_id])
+    # @article = Article.find(params[article_id])
   end
 
   def index
@@ -28,4 +32,8 @@ class Public::ItemsController < ApplicationController
 
   def destroy_all
   end
+
+
+
+
 end
