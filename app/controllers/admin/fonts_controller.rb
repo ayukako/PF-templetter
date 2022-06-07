@@ -22,6 +22,9 @@ class Admin::FontsController < ApplicationController
     redirect_to admin_items_path
   end
 
+private
+
+
   def font_params
     params.require(:font).permit(:name, :image)
   end

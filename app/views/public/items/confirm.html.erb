@@ -1,2 +1,42 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class= "row" >
+  <div class= "container">
+    <h2>ショッピングカート</h2>
+
+    <table class = "table">
+  <thead>
+      <th>封筒</th>
+      <th>便箋</th>
+      <th>フォント</th>
+      <th>文章</th>
+  </thead>
+  <tbody>
+      <tr>
+        <td>
+          <%= @envelope.name %>
+          <%= image_tag @envelope.image, size: "150x100" %>
+        </td>
+        <td>
+          <%= @paper.name %>
+          <%= image_tag @paper.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @font.name %>
+          <%= image_tag @font.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @message %>
+        </td>
+        <td>
+          <%#= form_with scope: 'item', url:new_public_item_path, method: :get do |f| %>
+            <%#= f.hidden_field :envelope_id, value: @envelope.id %>
+            <%#= f.hidden_field :paper_id, value: @paper.id %>
+            <%#= f.hidden_field :font_id, value: @font.id %>
+            <%#= f.hidden_field :article, value: @article %>
+          <%#= f.text_field :envelope = params(:name) %>
+          <%#= f.submit '商品選択画面に戻る'%>
+          <%# end %>
+        </td>
+  </tbody>
+</table>
+
+<%= link_to "商品選択画面に戻る", new_public_item_path(envelope_id: @envelope.id,paper_id: @paper.id, font_id: @font.id) %>

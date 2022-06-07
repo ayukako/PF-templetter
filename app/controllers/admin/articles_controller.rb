@@ -32,6 +32,9 @@ class Admin::ArticlesController < ApplicationController
     redirect_to admin_article_path(@article.id)
   end
 
+
+private
+
   def article_params
     params.require(:article).permit(:name, :content)
   end
