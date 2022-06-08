@@ -12,29 +12,28 @@
   <tbody>
       <tr>
         <td>
-          <%= @envelope.name %>
-          <%= image_tag @envelope.image, size: "150x100" %>
+            <%= @envelope.name %>
+            <%= image_tag @envelope.image, size: "150x100" %>
         </td>
         <td>
-          <%= @paper.name %>
-          <%= image_tag @paper.image, size: "150x100" %>
+            <%= @paper.name %>
+            <%= image_tag @paper.image, size: "150x100" %>
         </td>
         <td>
             <%= @font.name %>
-          <%= image_tag @font.image, size: "150x100" %>
+            <%= image_tag @font.image, size: "150x100" %>
         </td>
         <td>
             <%= @message %>
         </td>
         <td>
-          <%#= form_with scope: 'item', url:new_public_item_path, method: :get do |f| %>
-            <%#= f.hidden_field :envelope_id, value: @envelope.id %>
-            <%#= f.hidden_field :paper_id, value: @paper.id %>
-            <%#= f.hidden_field :font_id, value: @font.id %>
-            <%#= f.hidden_field :article, value: @article %>
-          <%#= f.text_field :envelope = params(:name) %>
-          <%#= f.submit '商品選択画面に戻る'%>
-          <%# end %>
+            <%= form_with scope: 'item', url:new_public_order_path, method: :get do |f| %>
+                <%= f.hidden_field :envelope_id, value: @envelope.id %>
+                <%= f.hidden_field :paper_id, value: @paper.id %>
+                <%= f.hidden_field :font_id, value: @font.id %>
+                <%= f.hidden_field :message, value: @message %>
+            <%= f.submit '郵送先/注文情報を入力する'%>
+          <% end %>
         </td>
   </tbody>
 </table>
