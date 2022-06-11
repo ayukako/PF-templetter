@@ -37,5 +37,4 @@
         </td>
   </tbody>
 </table>
-
-<%= link_to "商品選択画面に戻る", new_public_item_path(envelope_id: @envelope.id,paper_id: @paper.id, font_id: @font.id) %>
+<%= link_to "商品選択画面に戻る", edit_public_item_path(@item) %>

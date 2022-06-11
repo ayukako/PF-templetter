@@ -1,2 +1,30 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<div class= "row" >
+  <div class= "container">
+    <h2>注文情報を確認する</h2>
+
+    <table class = "table">
+    <tr>
+      <th>封筒</th>
+      <th>便箋</th>
+      <th>フォント</th>
+      <th>文章</th>
+    </tr>
+      <tr>
+        <td>
+            <%= @envelope.name %>
+            <%= image_tag @envelope.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @paper.name %>
+            <%= image_tag @paper.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @font.name %>
+            <%= image_tag @font.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @message %>
+        </td>
+      </tr>
+    </table>
+

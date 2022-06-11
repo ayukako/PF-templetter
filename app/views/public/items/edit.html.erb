@@ -1,2 +1,53 @@
-<h1>Public::Items#edit</h1>
-<p>Find me in app/views/public/items/edit.html.erb</p>
+<div class= "row" >
+  <div class= "container">
+    <h2>手紙を編集する</h2>
+      <%= form_with model: @item, url:new_public_order_path, id: 'form_id' do |f| %>
+        <%= f.collection_select :envelope_id, @envelopes, :id, :name, {prompt: "封筒を選ぶ" } %>
+        <%= f.collection_select :paper_id,  @papers, :id, :name, {prompt: "便箋を選ぶ" } %>
+        <%= f.collection_select :font_id, @fonts, :id, :name, {prompt: "フォントを選ぶ" } %>
+        <%= f.collection_select :article_id, @articles, :content, :name, {prompt: "文章を選ぶ"} %>
+      <%= f.submit '郵送先/注文情報を入力する' %>
+    <% end %>
+
+  </div>
+</div>
+
+        <title>templetter</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=320, minimum-scale=1.0, maximum-scale=2.0">
+
+        <div style="editorwrapper">
+            <div class="editor">
+                <p style="background-color:Black; color:white;">入力フォーム</p>
+                <form name="js">
+                    <p>手紙の内容</p>
+                    <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
+<%= @item.article %>
+                    </textarea>
+                </form>
+                <button id="button_preview" type="button" width="100px"/>
+            </div>
+
+            <div class="preview">
+                <p style="background-color:Black; color:white;">プレビュー</p>
+                <div id="livepreview" class="livepreview"></div>
+            </div>
+
+        </div>
+<script>
+$('#form_id').submit(function(){
+   var message =  $("#liveeditor").val()
+   var input = $("<input>")
+               .attr("type", "hidden")
+               .attr("name", "message").val(message);
+    $('#form_id').append(input);
+    //
+    // バリデーションチェックや、データの加工を行う。
+    //
+
+    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+})
+
+
+</script>

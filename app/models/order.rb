@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
-  belongs_to :items
-  belongs_to :customers
+  belongs_to :item
+  belongs_to :customer
 
   has_one_attached :image
   validates :image, presence: true

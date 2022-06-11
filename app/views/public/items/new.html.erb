@@ -1,11 +1,11 @@
 <div class= "row" >
   <div class= "container">
-    <h2>商品一覧</h2>
-      <%= form_with url:confirm_public_items_path, id: 'form_id' do |f| %>
-        <%= f.collection_select :envelope_id, @envelopes, :id, :name, {include_blank: true, selected: params[:envelope_id].present? ? params[:envelope_id].to_i: nil } %>
-        <%= f.collection_select :paper_id,  @papers, :id, :name, {include_blank: true, selected: params[:paper_id].present? ? params[:paper_id].to_i: nil } %>
-        <%= f.collection_select :font_id, @fonts, :id, :name, {include_blank: true, selected: params[:font_id].present? ? params[:font_id].to_i: nil } %>
-        <%= f.collection_select :article_id,  @articles, :content, :name, {include_blank: true, selected: params[:article_id].present? ? params[:article_id].to_i: nil } %>
+    <h2>手紙を作成する</h2>
+      <%= form_with model: @item, url:confirm_public_items_path, id: 'form_id' do |f| %>
+        <%= f.collection_select :envelope_id, @envelopes, :id, :name, {prompt: "封筒を選ぶ" } %>
+        <%= f.collection_select :paper_id,  @papers, :id, :name, {prompt: "便箋を選ぶ" } %>
+        <%= f.collection_select :font_id, @fonts, :id, :name, {prompt: "フォントを選ぶ" } %>
+        <%= f.collection_select :article_id, @articles, :content, :name, {prompt: "文章を選ぶ"} %>
       <%= f.submit '手紙を一時保存する' %>
     <% end %>
 
@@ -23,7 +23,7 @@
                 <form name="js">
                     <p>手紙の内容</p>
                     <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
-                        <%= session[:message].present? ? session[:message]: nil %>
+<%= @item.article %>
                     </textarea>
                 </form>
             </div>
