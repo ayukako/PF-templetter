@@ -6,16 +6,13 @@
         <%= f.collection_select :paper_id,  @papers, :id, :name, {prompt: "便箋を選ぶ" } %>
         <%= f.collection_select :font_id, @fonts, :id, :name, {prompt: "フォントを選ぶ" } %>
         <%= f.collection_select :article_id, @articles, :content, :name, {prompt: "文章を選ぶ"} %>
+        <%= f.hidden_field :message, value: @articles %>
       <%= f.submit '手紙を一時保存する' %>
     <% end %>
 
   </div>
 </div>
 
-        <title>templetter</title>
-
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=320, minimum-scale=1.0, maximum-scale=2.0">
 
         <div style="editorwrapper">
             <div class="editor">
@@ -23,7 +20,7 @@
                 <form name="js">
                     <p>手紙の内容</p>
                     <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
-<%= @item.article %>
+                      <%= @item.article %>
                     </textarea>
                 </form>
             </div>
@@ -36,12 +33,8 @@
         </div>
 <script>
 $('#form_id').submit(function(){
-   var message =  $("#liveeditor").val()
-   var input = $("<input>")
-               .attr("type", "hidden")
-               .attr("name", "message").val(message);
-    $('#form_id').append(input);
-    //
+  const hidden_field = document.getElementById('item_message');
+  hidden_field.value = document.getElementById('livepreview').innerText;
     // バリデーションチェックや、データの加工を行う。
     //
 

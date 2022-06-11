@@ -18,7 +18,7 @@ class Public::ItemsController < ApplicationController
     @envelope = Envelope.find(params[:item][:envelope_id])
     @paper = Paper.find(params[:item][:paper_id])
     @font = Font.find(params[:item][:font_id])
-    @message = params[:item][:article]
+    @message = params[:item][:message]
     @item = Item.new(envelope: @envelope, paper: @paper, font: @font, article: @message)
     @item.customer_id = current_customer.id
     @item.article = "フォームで一緒に送ってあげてね！" # textareaのデータが取れたらこの

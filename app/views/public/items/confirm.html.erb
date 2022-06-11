@@ -1,3 +1,10 @@
+<style>
+@font-face {
+  font-family: "Kawaii";
+  font-weight: 700;
+  src: url("/assets/fonts/font_cute.otf") format("otf")
+}
+</style>
 <div class= "row" >
   <div class= "container">
     <h2>ショッピングカート</h2>
@@ -24,7 +31,22 @@
             <%= image_tag @font.image, size: "150x100" %>
         </td>
         <td>
-            <%= @message %>
+
+            <div>
+              <%= simple_format(@message, style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
+            </div>
+            <div id="livepreview" class="livepreview"></div>
+            <script>
+            $('#form_id').submit(function(){
+              var message =  $("#liveeditor").val()
+              var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "message").val(message);
+            $('#form_id').append(input);
+                    // バリデーションチェックや、データの加工を行う
+                    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+            })
+            </script>
         </td>
         <td>
             <%= form_with scope: 'item', url:new_public_order_path, method: :get do |f| %>
@@ -38,3 +60,12 @@
   </tbody>
 </table>
 <%= link_to "商品選択画面に戻る", edit_public_item_path(@item) %>
+
+<script>
+  const preview = document.getElementById("livepreview");
+  var font = new FontFace("Kawaii", 'url("/assets/fonts/font_cute.otf")', {style: 'normal', weight: 700});
+  font.load().then(function(loadedFace) {
+      document.fonts.add(loadedFace);
+      preview.style.fontFamily = "Kawaii"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+  });
+</script>
