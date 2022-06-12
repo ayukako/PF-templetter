@@ -4,7 +4,6 @@ class Public::OrdersController < ApplicationController
     @paper = Paper.find(params[:item][:paper_id])
     @font = Font.find(params[:item][:font_id])
     @message = params[:item][:message]
-    session[:message] = params[:item][:message]
     @item = Item.new(envelope: @envelope, paper: @paper, font: @font)
   end
 
@@ -13,7 +12,6 @@ class Public::OrdersController < ApplicationController
     @paper = Paper.find(params[:item][:paper_id])
     @font = Font.find(params[:item][:font_id])
     @message = params[:item][:message]
-    session[:message] = params[:item][:message]
     @item = Item.new(envelope: @envelope, paper: @paper, font: @font)
   end
 
