@@ -7,7 +7,7 @@
 </style>
 <div class= "row" >
   <div class= "container">
-    <h2>ショッピングカート</h2>
+    <h2>未完了の手紙</h2>
 
     <table class = "table">
   <thead>
@@ -59,7 +59,16 @@
         </td>
   </tbody>
 </table>
-<%= link_to "商品選択画面に戻る", edit_public_item_path(@item) %>
+
+            <%= form_with scope: 'item', url:edit_public_item_path(@item.id), method: :get do |f| %>
+                <%= f.hidden_field :envelope_id, value: @envelope.id %>
+                <%= f.hidden_field :paper_id, value: @paper.id %>
+                <%= f.hidden_field :font_id, value: @font.id %>
+                <%= f.hidden_field :article_id, value: @article_id %>
+                <%= f.hidden_field :message, value: @message %>
+            <%= f.submit '商品選択画面に戻る'%>
+          <% end %>
+<%#= link_to "商品選択画面に戻る", edit_public_item_path(@item) %>
 
 <script>
   const preview = document.getElementById("livepreview");

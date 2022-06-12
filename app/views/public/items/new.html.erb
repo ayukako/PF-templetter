@@ -1,5 +1,5 @@
-<div class= "row" >
-  <div class= "container">
+<div>
+  <div class="container">
     <h2>手紙を作成する</h2>
       <%= form_with model: @item, url:confirm_public_items_path, id: 'form_id' do |f| %>
         <%= f.collection_select :envelope_id, @envelopes, :id, :name, {prompt: "封筒を選ぶ" } %>
@@ -9,7 +9,6 @@
         <%= f.hidden_field :message, value: @articles %>
       <%= f.submit '手紙を一時保存する' %>
     <% end %>
-
   </div>
 </div>
 
@@ -19,7 +18,7 @@
                 <p style="background-color:Black; color:white;">入力フォーム</p>
                 <form name="js">
                     <p>手紙の内容</p>
-                    <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
+                    <textarea id="liveeditor" name="htmlbody" rows="10" cols="72">
                       <%= @item.article %>
                     </textarea>
                 </form>

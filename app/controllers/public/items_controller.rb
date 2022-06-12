@@ -18,12 +18,14 @@ class Public::ItemsController < ApplicationController
     @envelope = Envelope.find(params[:item][:envelope_id])
     @paper = Paper.find(params[:item][:paper_id])
     @font = Font.find(params[:item][:font_id])
+    @article_id = params[:item][:article_id]
     @message = params[:item][:message]
+    
     @item = Item.new(envelope: @envelope, paper: @paper, font: @font, article: @message)
     @item.customer_id = current_customer.id
-    @item.article = "フォームで一緒に送ってあげてね！" # textareaのデータが取れたらこの
+    #@item.article = "フォームで一緒に送ってあげてね！" # textareaのデータが取れたらこの
     @item.save
-    session[:message] = params[:item][:article]
+    #session[:message] = params[:item][:article]
   end
 
   def edit
@@ -32,7 +34,12 @@ class Public::ItemsController < ApplicationController
     @papers = Paper.all
     @fonts = Font.all
     @articles = Article.all
-    render 'new' # edit作ってください！
+    
+    @selected_envelope = params[:item][:envelope_id]
+    @selected_paper_id = params[:item][:paper_id]
+    @selected_font_id = params[:item][:font_id]
+    @selected_article_id = params[:item][:article_id]
+    @message = params[:item][:message]
   end
 
   def update
