@@ -7,7 +7,7 @@
 </style>
 <div class= "row" >
   <div class= "container">
-    <h2>未完了の手紙</h2>
+    <h2>未完成の手紙</h2>
 
     <table class = "table">
   <thead>
@@ -66,9 +66,8 @@
                 <%= f.hidden_field :font_id, value: @font.id %>
                 <%= f.hidden_field :article_id, value: @article_id %>
                 <%= f.hidden_field :message, value: @message %>
-            <%= f.submit '商品選択画面に戻る'%>
+            <%= f.submit 'もう一度手紙を作り直す'%>
           <% end %>
-<%#= link_to "商品選択画面に戻る", edit_public_item_path(@item) %>
 
 <script>
   const preview = document.getElementById("livepreview");

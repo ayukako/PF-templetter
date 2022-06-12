@@ -16,112 +16,141 @@ Rails.start();
 // Turbolinks.start();
 ActiveStorage.start();
 
-function preview_paper(id) {
-    //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //console.log(id);
-    const preview = $("#livepreview")
-    // ピンク　ブラウン　ホワイト
-    if(id == 1){
-        preview.css("background-image",'url("/assets/images/paper_pink.jpg")')
-    }else if(id == 2){
-        preview.css("background-image",'url("/assets/images/paper_blue.jpg")')
-    }else if(id == 3){
-        preview.css("background-image",'url("/assets/images/paper_offwhite.jpg")')
-    }
-}
+// function preview_paper(id) {
+//     console.log('preview_paper')
+//     const preview = $("#livepreview")
+//     // ピンク　ブラウン　ホワイト
+//     if(id == 1){
+//         preview.css("background-image",'url("/assets/images/paper_pink.jpg")')
+//     }else if(id == 2){
+//         preview.css("background-image",'url("/assets/images/paper_blue.jpg")')
+//     }else if(id == 3){
+//         preview.css("background-image",'url("/assets/images/paper_offwhite.jpg")')
+//     }
+// }
 
-function preview_font(id) {
-    const preview = document.getElementById("livepreview");$("#livepreview")
-    // 可愛い/綺麗　綺麗/達筆　可愛い/クセ
-    if(id == 1){
-        var font = new FontFace("Kawaii", 'url("/assets/fonts/font_cute.otf")', {style: 'normal', weight: 700});
-        font.load().then(function(loadedFace) {
-            document.fonts.add(loadedFace);
-            preview.style.fontFamily = "Kawaii"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
-        });
-    }else if(id == 2){
-        var font = new FontFace("Beauty", 'url("/assets/fonts/font_beuty.ttf")', {style: 'normal', weight: 700});
-        font.load().then(function(loadedFace) {
-            document.fonts.add(loadedFace);
-            preview.style.fontFamily = "Beauty"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
-        });
-    }else if(id == 3){
-        var font = new FontFace("Kuse", 'url("/assets/fonts/font_kuse.TTF")', {style: 'normal', weight: 700});
-        font.load().then(function(loadedFace) {
-            document.fonts.add(loadedFace);
-            preview.style.fontFamily = "Kuse"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
-        });
-    }
-}
+// function preview_font(id) {
+//     console.log('preview_font')
+//     const preview = document.getElementById("livepreview");$("#livepreview")
+//     // 可愛い/綺麗　綺麗/達筆　可愛い/クセ
+//     if(id == 1){
+//         var font = new FontFace("Kawaii", 'url("/assets/fonts/font_cute.otf")', {style: 'normal', weight: 700});
+//         font.load().then(function(loadedFace) {
+//             document.fonts.add(loadedFace);
+//             preview.style.fontFamily = "Kawaii"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+//         });
+//     }else if(id == 2){
+//         var font = new FontFace("Beauty", 'url("/assets/fonts/font_beuty.ttf")', {style: 'normal', weight: 700});
+//         font.load().then(function(loadedFace) {
+//             document.fonts.add(loadedFace);
+//             preview.style.fontFamily = "Beauty"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+//         });
+//     }else if(id == 3){
+//         var font = new FontFace("Kuse", 'url("/assets/fonts/font_kuse.TTF")', {style: 'normal', weight: 700});
+//         font.load().then(function(loadedFace) {
+//             document.fonts.add(loadedFace);
+//             preview.style.fontFamily = "Kuse"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+//         });
+//     }
+// }
 
-function preview_article(elm) {
-    const id = $("#article_id").val()
-    const preview = $("#livepreview")
-    var selectedOptions = elm.children(":selected").val();
-    $("#liveeditor").text(selectedOptions)
-    $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
-}
+// function preview_article(elm) {
+//     console.log('preview_article')
+//     const id = $("#article_id").val()
+//     const preview = $("#livepreview")
+//     var selectedOptions = elm.children(":selected").val();
+//     $("#liveeditor").text(selectedOptions)
+//     $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
+// }
 
-//document.addEventListener("turbolinks:load", ()=> {
-    //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    //console.log(document.getElementById("item_paper_id"));
-    //const item_paper_select_box = document.getElementById("item_paper_id");
-    //console.log(item_paper_select_box);
-    //item_paper_select_box.addEventListener("change", preview_paper(1));
-    //console.log($("#item_paper_id"));
-    //$("#item_paper_id").on("change", (preview_paper($(this).value)));
-    //$("#item_font_id").change(preview_font($(this).value));
-    //$("#item_article_id").change(preview_article($(this)));
-//});
+
 
 $(function() {
-    $("#item_paper_id").change(function(){
-        const id = this.value;
-        const preview = $("#livepreview")
-        // ピンク　ブラウン　ホワイト
-        if(id == 1){
-            preview.css("background-image",'url("/assets/images/paper_pink.jpg")')
-        }else if(id == 2){
-            preview.css("background-image",'url("/assets/images/paper_blue.jpg")')
-        }else if(id == 3){
-            preview.css("background-image",'url("/assets/images/paper_offwhite.jpg")')
-        }
-    })
+  // 初期化処理呼び出し
+  init();
+  
+  $("#item_paper_id").change(change_background_image)
+  $("#item_font_id").change(change_font)
+  $("#item_article_id").change(change_article)
 
-    $("#item_font_id").change(function(){
-        const id = this.value;
-        const preview = document.getElementById("livepreview");$("#livepreview")
-        // 可愛い/綺麗　綺麗/達筆　可愛い/クセ
-        if(id == 1){
-            var font = new FontFace("Kawaii", 'url("/assets/fonts/font_cute.otf")', {style: 'normal', weight: 700});
-            font.load().then(function(loadedFace) {
-                document.fonts.add(loadedFace);
-                preview.style.fontFamily = "Kawaii"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
-            });
-        }else if(id == 2){
-            var font = new FontFace("Beauty", 'url("/assets/fonts/font_beuty.ttf")', {style: 'normal', weight: 700});
-            font.load().then(function(loadedFace) {
-                document.fonts.add(loadedFace);
-                preview.style.fontFamily = "Beauty"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
-            });
-        }else if(id == 3){
-            var font = new FontFace("Kuse", 'url("/assets/fonts/font_kuse.TTF")', {style: 'normal', weight: 700});
-            font.load().then(function(loadedFace) {
-                document.fonts.add(loadedFace);
-                preview.style.fontFamily = "Kuse"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
-            });
-        }
-    })
+  $('body').keyup(function() {
+    $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
+  });
 
-    $("#item_article_id").change(function(){
-        const id = $("#article_id").val()
-        const preview = $("#livepreview")
-        var selectedOptions = $(this).children(":selected").val();
-        $("#liveeditor").text(selectedOptions)
-        $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
-    })
+  // 初期化処理
+  function init(){
+    change_background_image()
+    change_font()
+    change_article()
+  }
+ 
+  // 背景を変更
+  function change_background_image() {
+    const id = $("#item_paper_id").val()
+    const preview = $("#livepreview")
+    // ピンク　ブラウン　オフホワイト
+    if(id == 1){
+      preview.css("background-image",'url("/assets/images/paper_pink.jpg")')
+    }else if(id == 2){
+      preview.css("background-image",'url("/assets/images/paper_blue.jpg")')
+    }else if(id == 3){
+      preview.css("background-image",'url("/assets/images/paper_offwhite.jpg")')
+    }
+   }
+   
+  //  
+  function change_article() {
+    const id = $("#item_article_id").val()
+    const preview = $("#livepreview")
+    // $("#item_article_id").change(function(){
+    //     const id = $("#article_id").val()
+    //     const preview = $("#livepreview")
+    var selectedOptions = $(this).children(":selected").val();
+    $("#liveeditor").text(selectedOptions)
+    $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
+  }
+
+  function change_font() {
+    // jquery 記述
+    const id = $("#item_font_id").val()
+    // const preview = $("#livepreview")
+
+    /*$("#item_font_id").change(function(){
+         const id = this.value;
+         const preview = document.getElementById("livepreview");$("#livepreview")
+        // 可愛い/綺麗　綺麗/達筆　可愛い/クセ */
+        
+    // プレーンjs
+    const preview = document.getElementById("livepreview")
+
+    if(id == 1) {
+      var font = new FontFace("Kawaii", 'url("/assets/fonts/font_cute.otf")', {style: 'normal', weight: 700});
+      font.load().then(function(loadedFace) {
+        document.fonts.add(loadedFace);
+        preview.style.fontFamily = "Kawaii"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+      });
+    } else if(id == 2){
+      var font = new FontFace("Beauty", 'url("/assets/fonts/font_beuty.ttf")', {style: 'normal', weight: 700});
+      font.load().then(function(loadedFace) {
+        document.fonts.add(loadedFace);
+        preview.style.fontFamily = "Beauty"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+      });
+    } else if(id == 3){
+      var font = new FontFace("Kuse", 'url("/assets/fonts/font_kuse.TTF")', {style: 'normal', weight: 700});
+      font.load().then(function(loadedFace) {
+        document.fonts.add(loadedFace);
+        preview.style.fontFamily = "Kuse"; //.css("font-family", 'url("/assets/fonts/font_cute.oft")')
+      });
+    }
+  }
+});
 
 
+
+/*
+$(function() {
+
+    //ボタンでプレビュー機能を表示させる時の記述
     // $("#button_preview").click(function() {
     //     console.log("button_preview on click");
     //     {
@@ -169,8 +198,6 @@ $(function() {
     //     }
     // })
 
-    $('body').keyup(function() {
-        $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
-    });
 
-});
+})
+*/
