@@ -38,27 +38,25 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :public do
-    resources :items, except: [:show, :destroy] do
-      collection do
-        get :destroy_all
-        get :confirm
-        post :confirm
-      end
-    end
     resource :customers, only: [:show] do
       collection do
+        get :customer_index
         get :unsubscribe
         patch :withdraw
       end
-    end
-    resources :orders, only: [:new, :create, :show] do
-      collection do
-        post :confirm
-        get :thanks
+      resources :items, except: [:show, :destroy] do
+        collection do
+          delete :destroy_all
+          get :confirm
+          post :confirm
+        end
+        resources :orders, only: [:new, :create, :show] do
+          collection do
+            post :confirm
+            get :thanks
+          end
+        end
       end
     end
-    resources :items_choices, only: [:index]
   end
-
-
 end

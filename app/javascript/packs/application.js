@@ -68,7 +68,7 @@ ActiveStorage.start();
 $(function() {
   // 初期化処理呼び出し
   init();
-  
+
   $("#item_paper_id").change(change_background_image)
   $("#item_font_id").change(change_font)
   $("#item_article_id").change(change_article)
@@ -83,7 +83,7 @@ $(function() {
     change_font()
     change_article()
   }
- 
+
   // 背景を変更
   function change_background_image() {
     const id = $("#item_paper_id").val()
@@ -97,8 +97,8 @@ $(function() {
       preview.css("background-image",'url("/assets/images/paper_offwhite.jpg")')
     }
    }
-   
-  //  
+
+  //
   function change_article() {
     const id = $("#item_article_id").val()
     const preview = $("#livepreview")
@@ -119,7 +119,7 @@ $(function() {
          const id = this.value;
          const preview = document.getElementById("livepreview");$("#livepreview")
         // 可愛い/綺麗　綺麗/達筆　可愛い/クセ */
-        
+
     // プレーンjs
     const preview = document.getElementById("livepreview")
 

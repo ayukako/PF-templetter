@@ -7,6 +7,8 @@ class Public::ItemsController < ApplicationController
     @articles = Article.all
   end
 
+
+
   def index
     @envelopes = Envelope.all
     @papers = Paper.all
@@ -48,13 +50,16 @@ class Public::ItemsController < ApplicationController
     font_id: params[:item][:font_id],
     article: params[:item][:message]
     )
-    redirect_to new_public_order_path(params: {item: item_params})
+    redirect_to new_public_customers_item_order_path(@item.id)
   end
 
   def create
   end
 
   def destroy_all
+    @item = item.find(params[:id])
+    @item.delete
+    redirect_to public_homes_top_path
   end
 
 private

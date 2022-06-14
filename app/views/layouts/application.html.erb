@@ -41,10 +41,10 @@
               <%= link_to "マイページ", public_customers_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '商品一覧', public_items_path, class: 'nav-link text-dark' %>
+              <%= link_to '商品一覧', public_customers_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '未完成の手紙を見る', confirm_public_items_path, class: 'nav-link text-dark' %>
+              <%= link_to '未発注の手紙を見る',  customer_index_public_customers_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
@@ -54,7 +54,7 @@
               <%= link_to 'トップ', public_root_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to '商品一覧', public_items_path, class: 'nav-link text-dark' %>
+              <%= link_to '商品一覧', public_customers_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>

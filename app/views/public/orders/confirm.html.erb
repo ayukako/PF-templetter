@@ -28,3 +28,45 @@
       </tr>
     </table>
 
+        <div style="editorwrapper">
+            <div class="editor">
+                <p style="background-color:Black; color:white;">入力フォーム</p>
+                <form name="js">
+                    <p>手紙の内容</p>
+                    <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
+                      <%= @message %>
+                    </textarea>
+                </form>
+            </div>
+
+            <div class="preview">
+                <p style="background-color:Black; color:white;">プレビュー</p>
+                <div id="livepreview" class="livepreview"></div>
+            </div>
+
+        </div>
+<script>
+$('#form_id').submit(function(){
+  const hidden_field = document.getElementById('item_message');
+  hidden_field.value = document.getElementById('livepreview').innerText;
+    // バリデーションチェックや、データの加工を行う。
+    //
+
+    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+})
+
+
+</script>
+
+
+<%= form_with model:[@order, @item], url: public_customers_item_orders_path do |f| %>
+
+  <%= f.hidden_field :payment_method %>
+  <%= f.hidden_field :postal_code %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :sender_postal_code %>
+  <%= f.hidden_field :sender_address %>
+  <%= f.hidden_field :sender %>
+  <%= f.hidden_field :paper_id %>
+<%= f.submit "確認画面へ進む" %>

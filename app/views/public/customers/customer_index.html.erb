@@ -1,0 +1,7 @@
+<% @items.each do |item| %>
+
+  <% if item.order.nil? %>
+    <%= item.envelope.id %>
+
+  <% end %>
+<% end %>

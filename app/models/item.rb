@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
- 
+
   has_one :order
+  belongs_to :customer
   belongs_to :envelope
   belongs_to :paper
   belongs_to :font

@@ -1,36 +1,47 @@
-<div class= "row" >
-  <div class= "container">
-    <h2>郵送先/注文情報入力</h2>
+ <h2>郵送先/注文情報入力</h2><div class="container">
 
-    <table class = "table">
-  <thead>
-      <th>封筒</th>
-      <th>便箋</th>
-      <th>フォント</th>
-      <th>文章</th>
-  </thead>
-  <tbody>
+  <div class="row">
+    <div class="col">
+
+    <table class = "table table-bordered order-table">
       <tr>
+        <th>封筒</th>
         <td>
-            <%= @envelope.name %>
-            <%= image_tag @envelope.image, size: "150x100" %>
+          <%= @envelope.name %>
         </td>
+      </tr>
+      <tr>
+        <th>便箋</th>
         <td>
-            <%= @paper.name %>
-            <%= image_tag @paper.image, size: "150x100" %>
+          <%= @paper.name %>
         </td>
+      </tr>
+      <tr>
+        <th>フォント</th>
         <td>
-            <%= @font.name %>
-            <%= image_tag @font.image, size: "150x100" %>
+          <%= @font.name %>
         </td>
+      </tr>
+      <tr>
+        <th>文章</th>
         <td>
-            <%= @message %>
+            <div>
+              <%= simple_format(@message) %>
+            </div>
         </td>
-  </tbody>
-</table>
+      </tr>
+      <tr>
+        <th>お支払い金額</th>
+        <td>
+          300円（税込）
+        </td>
+      </tr>
+    </table>
+    </div>
+    <div class="col">
 
 
-<%= form_with model:[@order, @item], url: confirm_public_orders_path do |f| %>
+<%= form_with model:[@order, @item], url: confirm_public_customers_item_orders_path do |f| %>
 <p>支払い方法</p>
 <%= f.radio_button :payment_method, "credit_card" %>
 <%= f.label :payment_method, "クレジットカード" %>
@@ -60,7 +71,13 @@
 <%= f.label :宛名 %>
 <%= f.text_field :sender, autocomplete: "name" %><br />
 <%= f.hidden_field :paper_id %>
+<%= f.hidden_field :font_id %>
 
 <%= f.submit "確認画面へ進む" %>
 
 <% end %>
+    </div>
+  </div>
+</div>
+
+
