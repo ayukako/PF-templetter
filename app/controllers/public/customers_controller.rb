@@ -9,7 +9,9 @@ class Public::CustomersController < ApplicationController
   
   def customer_index
 
+
     @items = current_customer.items
+    
   end
 
   def withdraw

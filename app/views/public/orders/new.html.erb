@@ -7,31 +7,31 @@
       <tr>
         <th>封筒</th>
         <td>
-          <%= @envelope.name %>
+          <%= @item.envelope.name %>
         </td>
       </tr>
       <tr>
         <th>便箋</th>
         <td>
-          <%= @paper.name %>
+          <%= @item.paper.name %>
         </td>
       </tr>
       <tr>
         <th>フォント</th>
         <td>
-          <%= @font.name %>
+          <%= @item.font.name %>
         </td>
       </tr>
       <tr>
         <th>文章</th>
         <td>
             <div>
-              <%= simple_format(@message) %>
+              <%= @item.content %>
             </div>
         </td>
       </tr>
       <tr>
-        <th>お支払い金額</th>
+        <th>お支払い</th>
         <td>
           300円（税込）
         </td>
@@ -41,8 +41,8 @@
     <div class="col">
 
 
-<%= form_with model:[@order, @item], url: confirm_public_customers_item_orders_path do |f| %>
-<p>支払い方法</p>
+<%= form_with  url: confirm_public_customers_item_orders_path(@item), method: :get do |f| %>
+<h4>支払い方法</h4>
 <%= f.radio_button :payment_method, "credit_card" %>
 <%= f.label :payment_method, "クレジットカード" %>
 <%= f.radio_button :payment_method, "transfer" %>
@@ -51,7 +51,7 @@
 ポートフォリオのため割愛しております。</p>
 
 
-<p>郵送先情報</p>
+<h4>郵送先情報</h4>
 <%= f.label :郵便番号 %>
 <%= f.text_field :postal_code, autocomplete: "postal_code" %><br />
 <%= f.label :住所 %>
@@ -59,19 +59,14 @@
 <%= f.label :宛名 %>
 <%= f.text_field :name, autocomplete: "name" %><br />
 
-<p>送り主情報</p>
-<%= f.radio_button :select_address, 1 %>
-<%= f.label :select_address, "ご自身の住所を使用する" %><br />
-<%= f.radio_button :select_address, 2 %>
-<%= f.label :select_address, "新しい送り主情報を入力する" %><br />
+<h4>送り主情報</h4>
 <%= f.label :郵便番号 %>
 <%= f.text_field :sender_postal_code, autocomplete: "postal_code" %><br />
 <%= f.label :住所 %>
 <%= f.text_field :sender_address, autocomplete: "address" %><br />
 <%= f.label :宛名 %>
 <%= f.text_field :sender, autocomplete: "name" %><br />
-<%= f.hidden_field :paper_id %>
-<%= f.hidden_field :font_id %>
+
 
 <%= f.submit "確認画面へ進む" %>
 

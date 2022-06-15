@@ -11,19 +11,19 @@
     </tr>
       <tr>
         <td>
-            <%= @envelope.name %>
-            <%= image_tag @envelope.image, size: "150x100" %>
+            <%= @item.envelope.name %>
+            <%= image_tag @item.envelope.image, size: "150x100" %>
         </td>
         <td>
-            <%= @paper.name %>
-            <%= image_tag @paper.image, size: "150x100" %>
+            <%= @item.paper.name %>
+            <%= image_tag @item.paper.image, size: "150x100" %>
         </td>
         <td>
-            <%= @font.name %>
-            <%= image_tag @font.image, size: "150x100" %>
+            <%= @item.font.name %>
+            <%= image_tag @item.font.image, size: "150x100" %>
         </td>
         <td>
-            <%= @message %>
+            <%= @item.content %>
         </td>
       </tr>
     </table>
@@ -34,7 +34,7 @@
                 <form name="js">
                     <p>手紙の内容</p>
                     <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
-                      <%= @message %>
+                      <%= @item.content %>
                     </textarea>
                 </form>
             </div>
@@ -45,6 +45,9 @@
             </div>
 
         </div>
+    </div>
+  </div>
+
 <script>
 $('#form_id').submit(function(){
   const hidden_field = document.getElementById('item_message');
@@ -58,15 +61,20 @@ $('#form_id').submit(function(){
 
 </script>
 
+<%= @order.sender_postal_code %>
 
-<%= form_with model:[@order, @item], url: public_customers_item_orders_path do |f| %>
 
-  <%= f.hidden_field :payment_method %>
-  <%= f.hidden_field :postal_code %>
-  <%= f.hidden_field :address %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :sender_postal_code %>
-  <%= f.hidden_field :sender_address %>
-  <%= f.hidden_field :sender %>
-  <%= f.hidden_field :paper_id %>
+
+<%= form_with url: public_customers_item_orders_path(@item), method: :post do |f| %>
+
+  <%= f.hidden_field :payment_method, value: @order.payment_method %>
+  <%= f.hidden_field :postal_code, value: @order.postal_code %>
+  <%= f.hidden_field :address,value: @order.address %>
+  <%= f.hidden_field :name,value: @order.name %>
+  <%= f.hidden_field :sender_postal_code,value: @order.sender_postal_code %>
+  <%= f.hidden_field :sender_address,value: @order.sender_address %>
+  <%= f.hidden_field :sender,value: @order.sender %>
+  <%= f.hidden_field :payment,value: "payment" %>
 <%= f.submit "確認画面へ進む" %>
+<%end%>
+

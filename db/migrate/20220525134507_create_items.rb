@@ -6,7 +6,8 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :envelope_id, null: false
       t.integer :paper_id, null: false
       t.integer :font_id, null: false
-      t.text :article, null: false
+      t.integer :article_id, null: false
+      t.text :content, null: false
 
       t.timestamps
     end

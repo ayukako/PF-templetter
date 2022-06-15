@@ -1,99 +1,85 @@
-<div class="row">
-  <div class = "subtitle">
     <h2>商品一覧</h2>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
       <table class="table">
-        <thead>
           <tr>
-            <th>封筒</th><th>※花は含まれません</th>
+            <th>封筒（※花は含まれません）</th>
           </tr>
-        </thead>
-        <tbody>
           <% @envelopes.each do |envelope| %>
             <tr>
               <td>
-                <%= image_tag envelope.image, size: "150x100" %>
-              </td>
-              <td>
-                <%= envelope.id %>
-              </td>
-              <td>
-                <%= envelope.name %>
+                <%= image_tag envelope.image, size: "300x200" %><br>
+                （<%= envelope.id %>）<%= envelope.name %>
               </td>
             </tr>
             <% end %>
-        </tbody>
       </table>
-
+    </div>
+    <div class="col">
       <table class="table">
-        <thead>
           <tr>
             <th>便箋</th>
           </tr>
-        </thead>
-        <tbody>
           <% @papers.each do |paper| %>
             <tr>
               <td>
-                <%= image_tag paper.image, size: "150x100" %>
-              </td>
-              <td>
-                <%= paper.id %>
-              </td>
-              <td>
-                <%= paper.name %>
+                <%= image_tag paper.image, size: "300x200" %><br>
+                （<%= paper.id %>）<%= paper.name %>
               </td>
             </tr>
             <% end %>
-        </tbody>
       </table>
-
-      <table class="table">
-        <thead>
+    </div>
+    <div class="col">
+       <table class="table">
           <tr>
             <th>フォント</th>
           </tr>
-        </thead>
-        <tbody>
           <% @fonts.each do |font| %>
             <tr>
               <td>
-                <%= image_tag font.image, size: "250x200" %>
-              </td>
-              <td>
-                <%= font.id %>
-              </td>
-              <td>
-                <%= font.name %>
+                <%= image_tag font.image, size: "250x200" %><br>
+                （<%= font.id %>）<%= font.name %>
               </td>
             </tr>
             <% end %>
-        </tbody>
       </table>
+    </div>
+  </div>
+</div>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col">
       <table class="table">
-        <thead>
           <tr>
             <th>文章テンプレート</th>
           </tr>
-        </thead>
-        <tbody>
           <% @articles.each do |article| %>
             <tr>
               <td>
-                <%= article.id %>
-              </td>
-              <td>
-                <%= article.name %>
+                （<%= article.id %>）<%= article.name %>
               </td>
             </tr>
             <% end %>
-        </tbody>
       </table>
+    </div>
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th><h4>ご利用料金について</h4></th>
+        </tr>
+        <td>
+          <p>国内：便箋１枚の手紙郵送で一律３００円（税込）<br>
+          国外：現在お取り扱いがありません</p>
+        </td>
+      </table>
+    </div>
+  </div>
+</div>
 
-  <h4>ご利用料金について</h4>
-  <p>国内：便箋１枚の手紙郵送で一律３００円（税込）<br>
-    国外：現在お取り扱いがありません</p>
 
   <div class = "btn">
   <button type="button" class="btn btn-success">

@@ -5,6 +5,10 @@ class Item < ApplicationRecord
   belongs_to :envelope
   belongs_to :paper
   belongs_to :font
+  belongs_to :article
+
+
+
 
 #  has_one_attached :image
 #  validates :image, presence: true

@@ -100,8 +100,8 @@ $(function() {
 
   //
   function change_article() {
-    const id = $("#item_article_id").val()
-    const preview = $("#livepreview")
+    //const id = $("#item_article_id").val()
+    //const preview = $("#livepreview")
     // $("#item_article_id").change(function(){
     //     const id = $("#article_id").val()
     //     const preview = $("#livepreview")

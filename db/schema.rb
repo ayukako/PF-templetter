@@ -93,7 +93,8 @@ ActiveRecord::Schema.define(version: 2022_05_28_121802) do
     t.integer "envelope_id", null: false
     t.integer "paper_id", null: false
     t.integer "font_id", null: false
-    t.text "article", null: false
+    t.integer "article_id", null: false
+    t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

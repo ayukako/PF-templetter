@@ -1,90 +1,73 @@
-<div class= "row" >
-  <div class= "container">
-
 <h2>商品一覧</h2>
 
-<button type="button" class="btn btn-outline-primary"><%= link_to "封筒新規登録", new_admin_envelope_path %></button>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>封筒</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @envelopes.each do |envelope| %>
-      <tr>
-        <td><%= envelope.id%></td>
-        <td>
-          <%= link_to admin_envelope_path(envelope) do %>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th><button type="button" class="btn btn-outline-primary"><%= link_to "封筒新規登録", new_admin_envelope_path %></button></th>
+        </tr>
+        <% @envelopes.each do |envelope| %>
+        <tr>
+          <td>
+            (<%= envelope.id%>)
+            <%= link_to admin_envelope_path(envelope) do %>
             <span><%= envelope.name %></span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<button type="button" class="btn btn-outline-primary"><%= link_to "便箋新規登録", new_admin_paper_path %></button>
-<table class="table">
-  <thead>
-    <tr>
-      <th>便箋</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @papers.each do |paper| %>
-      <tr>
-        <td><%= paper.id%></td>
-        <td>
-          <%= link_to admin_paper_path(paper) do %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th><button type="button" class="btn btn-outline-primary"><%= link_to "便箋新規登録", new_admin_paper_path %></button></th>
+        </tr>
+        <% @papers.each do |paper| %>
+        <tr>
+          <td>
+            (<%= paper.id %>)
+            <%= link_to admin_paper_path(paper) do %>
             <span><%= paper.name %></span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-<button type="button" class="btn btn-outline-primary"><%= link_to "フォント新規登録", new_admin_font_path %></button>
-<table class="table">
-  <thead>
-    <tr>
-      <th>フォント</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @fonts.each do |font| %>
-      <tr>
-        <td><%= font.id%></td>
-        <td>
-          <%= link_to admin_font_path(font) do %>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th><button type="button" class="btn btn-outline-primary"><%= link_to "フォント新規登録", new_admin_font_path %></button></th>
+        </tr>
+        <% @fonts.each do |font| %>
+        <tr>
+          <td>
+            (<%= font.id %>)<%= link_to admin_font_path(font) do %>
             <span><%= font.name %></span>
           <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<button type="button" class="btn btn-outline-primary"><%= link_to "文章テンプレート新規登録", new_admin_article_path %></button>
-<table class="table">
-  <thead>
-    <tr>
-      <th>文章テンプレート</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.id%></td>
-        <td>
-          <%= link_to admin_article_path(article) do %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th><button type="button" class="btn btn-outline-primary"><%= link_to "文章テンプレート新規登録", new_admin_article_path %></th>
+        </tr>
+        <% @articles.each do |article| %>
+        <tr>
+          <td>
+            (<%= article.id %>)
+            <%= link_to admin_article_path(article) do %>
             <span><%= article.name %></span>
-          <% end %>
-        </td>
-    <% end %>
-  </tbody>
-</table>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

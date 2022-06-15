@@ -1,7 +1,7 @@
 <div class= "row" >
   <div class= "container">
     <h2>手紙を編集する</h2>
-      <%= form_with model: @item, url:new_public_customers_item_order_path(@item.id), id: 'form_id' do |f| %>
+      <%= form_with model: @item, url:public_customers_item_path(@item.id), id: 'form_id' do |f| %>
         <%= f.collection_select :envelope_id, @envelopes, :id, :name, { selected: @selected_envelope }, { prompt: "封筒を選ぶ" } %>
         <%= f.collection_select :paper_id,  @papers, :id, :name, { selected: @selected_paper_id }, { prompt: "便箋を選ぶ" } %>
         <%= f.collection_select :font_id, @fonts, :id, :name, { selected: @selected_font_id }, { prompt: "フォントを選ぶ" } %>
@@ -19,7 +19,7 @@
                 <form name="js">
                     <p>手紙の内容</p>
                     <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
-                      <%= @message %>
+                      <%= @item.content %>
                     </textarea>
                 </form>
             </div>
