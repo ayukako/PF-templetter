@@ -11,14 +11,14 @@
     <th>フォント</th>
     <th>手紙の内容</th>
   </tr>
-  <% @order.each do |order| %>
+  <% @orders.each do |order| %>
   <tr>
-  <th><%= link_to order.created_at,admin_order_path(order.id) %></th>
+  <th><%= link_to order.created_at.strftime("%Y/%m/%d"),admin_order_path(order.id) %></th>
   <th><%= order.customer.last_name%><%= order.customer.first_name %></th>
-  <th></th>
-  <th></th>
-  <th></th>
-  <th></th>
+  <th><%= order.item.envelope.name %></th>
+  <th><%= order.item.paper.name %></th>
+  <th><%= order.item.font.name %></th>
+  <th><%= order.item.content %></th>
   </tr>
   <% end %>
 </table>

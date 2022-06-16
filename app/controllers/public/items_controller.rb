@@ -1,4 +1,7 @@
 class Public::ItemsController < ApplicationController
+
+  before_action :authenticate_customer!, except: [:index, :new, :confirm]
+
   def new
     @item = Item.new
     @envelopes = Envelope.all
@@ -25,7 +28,7 @@ class Public::ItemsController < ApplicationController
       @message = params[:item][:message]
       @item = Item.new(envelope: @envelope, paper: @paper, font: @font, article: @article, content: @message)
       @item.customer_id = current_customer.id
-    
+
       @item.save
     else
       @item = Item.find(params[:item_id])
@@ -53,13 +56,13 @@ class Public::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.customer_id = current_customer.id
-
-    article = Article.find_by(content: params[:item][:article_id])
+    @article = Article.find_by(content: params[:item][:article_id])
     @item.update!(
     envelope_id: params[:item][:envelope_id],
     paper_id: params[:item][:paper_id],
     font_id: params[:item][:font_id],
-    article: article
+    article: @article,
+    content: params[:item][:message]
     )
     redirect_to confirm_public_customers_items_path(item_id: @item.id)
   end
@@ -68,7 +71,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def destroy_all
-    @item = item.find(params[:id])
+    @item = Item.find(params[:id])
     @item.delete
     redirect_to public_homes_top_path
   end
@@ -76,7 +79,7 @@ class Public::ItemsController < ApplicationController
 private
 
   def item_params
-    params.require(:item).permit(:envelope_id, :paper_id,:font_id, :article_id)
+    params.require(:item).permit(:envelope_id, :paper_id,:font_id, :article_id, :message)
   end
 
 end

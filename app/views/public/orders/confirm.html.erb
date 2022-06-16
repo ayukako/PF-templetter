@@ -21,47 +21,74 @@
         <td>
             <%= @item.font.name %>
             <%= image_tag @item.font.image, size: "150x100" %>
+            <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
         </td>
         <td>
-            <%= @item.content %>
+            <div>
+              <%= simple_format(@item.content, style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
+            </div>
+            <div id="livepreview" class="livepreview"></div>
+            <script>
+            $('#form_id').submit(function(){
+              var message =  $("#liveeditor").val()
+              var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "message").val(message);
+            $('#form_id').append(input);
+                    // バリデーションチェックや、データの加工を行う
+                    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+            })
+            </script>
+
         </td>
       </tr>
     </table>
 
-        <div style="editorwrapper">
-            <div class="editor">
-                <p style="background-color:Black; color:white;">入力フォーム</p>
-                <form name="js">
-                    <p>手紙の内容</p>
-                    <textarea id="liveeditor" name="htmlbody" rows="10" cols="80">
-                      <%= @item.content %>
-                    </textarea>
-                </form>
-            </div>
-
-            <div class="preview">
-                <p style="background-color:Black; color:white;">プレビュー</p>
-                <div id="livepreview" class="livepreview"></div>
-            </div>
-
-        </div>
+<div class="container">
+  <div class="row">
+    <h4>郵送先</h4>
+    <div class="col">
+      <p>郵便番号</p>
+      <%= @order.postal_code %>
+    </div>
+    <div class="col-6">
+      <p>住所</p>
+      <%= @order.address %>
+    </div>
+    <div class="col">
+      <p>宛名</p>
+      <%= @order.name %>
     </div>
   </div>
 
-<script>
-$('#form_id').submit(function(){
-  const hidden_field = document.getElementById('item_message');
-  hidden_field.value = document.getElementById('livepreview').innerText;
-    // バリデーションチェックや、データの加工を行う。
-    //
+  <div class="container">
+  <div class="row">
+    <h4>送り主</h4>
+    <div class="col">
+      <p>郵便番号</p>
+      <%= @order.sender_postal_code %>
+    </div>
+    <div class="col-6">
+      <p>住所</p>
+      <%= @order.sender_address %>
+    </div>
+    <div class="col">
+      <p>宛名</p>
+      <%= @order.sender %>
+    </div>
+  </div>
 
-    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
-})
-
-
-</script>
-
-<%= @order.sender_postal_code %>
+  <div class="container">
+  <div class="row">
+    <div class="col">
+     <h4>お支払い方法</h4>
+      <%= @order.payment_method %>
+    </div>
+    <div class="col">
+      <h4>お支払い金額</h4>
+      <p>３００円（税込）</p>
+    </div>
+  </div>
 
 
 
@@ -75,6 +102,6 @@ $('#form_id').submit(function(){
   <%= f.hidden_field :sender_address,value: @order.sender_address %>
   <%= f.hidden_field :sender,value: @order.sender %>
   <%= f.hidden_field :payment,value: "payment" %>
-<%= f.submit "確認画面へ進む" %>
+<%= f.submit "注文確定する" %>
 <%end%>
 

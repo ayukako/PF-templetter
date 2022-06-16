@@ -100,12 +100,7 @@ $(function() {
 
   //
   function change_article() {
-    //const id = $("#item_article_id").val()
-    //const preview = $("#livepreview")
-    // $("#item_article_id").change(function(){
-    //     const id = $("#article_id").val()
-    //     const preview = $("#livepreview")
-    var selectedOptions = $(this).children(":selected").val();
+  var selectedOptions = $(this).children(":selected").val();
     $("#liveeditor").text(selectedOptions)
     $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));
   }
@@ -114,12 +109,6 @@ $(function() {
     // jquery 記述
     const id = $("#item_font_id").val()
     // const preview = $("#livepreview")
-
-    /*$("#item_font_id").change(function(){
-         const id = this.value;
-         const preview = document.getElementById("livepreview");$("#livepreview")
-        // 可愛い/綺麗　綺麗/達筆　可愛い/クセ */
-
     // プレーンjs
     const preview = document.getElementById("livepreview")
 

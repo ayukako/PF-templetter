@@ -43,22 +43,22 @@
           <% @orders.each do |order| %>
             <tr>
               <th>
-                <%= order.created_at.strftime('%Y/%m/%d') %>
+                <%= order.created_at.strftime("%Y/%m/%d") %>
               </th>
               <th>
                 <%= order.item.envelope.name %>
               </th>
               <th>
-                <%= order.item.paper.naem %>
+                <%= order.item.paper.name %>
               </th>
               <th>
                 <%= order.item.font.name %>
               </th>
               <th>
-                <%= link_to "文章を表示する", public_orders_path(order.id) %>
+                <%= link_to "文章を表示する",  public_customers_item_order_path(order.item.id, order.id) %>
               </th>
               <th>
-                <%= order.payment %>
+                ３００円（税込）
               </th>
             </tr>
           <% end %>

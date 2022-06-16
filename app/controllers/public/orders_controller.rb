@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @item =  Item.find(params[:item_id])
     @order = Order.new(order_params)
-    
+
     # @order.postage = 800
     # if params[:order][:select_address] == "1"
     #   @order.postal_code = customer.postal_code
@@ -27,9 +27,7 @@ class Public::OrdersController < ApplicationController
     order = Order.new(order_params)
     order.customer_id = current_customer.id
     order.item_id = Item.find(params[:item_id]).id
-    byebug
     order.save!
-    
     redirect_to thanks_public_customers_item_orders_path
   end
 

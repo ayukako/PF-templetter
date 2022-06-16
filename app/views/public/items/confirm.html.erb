@@ -27,7 +27,7 @@
         <td>
 
             <div>
-              <%= simple_format(@message, style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
+              <%= simple_format(@item.content, style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
             </div>
             <div id="livepreview" class="livepreview"></div>
             <script>
@@ -49,7 +49,7 @@
                 <%= f.hidden_field :font_id, value: @font.id %>
                 <%= f.hidden_field :message, value: @message %>
             <%= f.submit '郵送先/注文情報を入力する'%>
-          <% end %>
+            <% end %>
         </td>
   </tbody>
 </table>
@@ -62,4 +62,4 @@
                 <%= f.hidden_field :message, value: @message %>
             <%= f.submit 'もう一度手紙を作り直す'%>
           <% end %>
-<td><%= link_to "  手紙を作成するのをやめる", destroy_all_public_customers_items_path(@item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>
+<td><%= link_to "  手紙を作成するのをやめる", destroy_all_public_customers_item_path(@item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>
