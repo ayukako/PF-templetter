@@ -71,7 +71,7 @@ $(function() {
 
   $("#item_paper_id").change(change_background_image)
   $("#item_font_id").change(change_font)
-  $("#item_article_id").change(change_article)
+  $("#item_article_content").change(change_article)
 
   $('body').keyup(function() {
     $('#livepreview').html($('#liveeditor').val().replace(/\r?\n/g, "<br>"));

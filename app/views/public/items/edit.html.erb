@@ -5,11 +5,11 @@
         <%= f.collection_select :envelope_id, @envelopes, :id, :name, { selected: @selected_envelope }, { prompt: "封筒を選ぶ" } %>
         <%= f.collection_select :paper_id,  @papers, :id, :name, { selected: @selected_paper_id }, { prompt: "便箋を選ぶ" } %>
         <%= f.collection_select :font_id, @fonts, :id, :name, { selected: @selected_font_id }, { prompt: "フォントを選ぶ" } %>
-        <%= f.collection_select :article_id, @articles, :content, :name, { selected: @selected_article_id }, { prompt: "文章を選ぶ" } %>
+        <%= f.hidden_field :article_id, value: @selected_article_id %>
+        
         <%= f.hidden_field :message, value: @message %>
       <%= f.submit '手紙を確認する' %>
     <% end %>
-
   </div>
 </div>
 
@@ -26,6 +26,7 @@
 
             <div class="preview">
                 <p style="background-color:Black; color:white;">プレビュー</p>
+                <p><%= Article.find(@selected_article_id).name %></p>
                 <div id="livepreview" class="livepreview"></div>
             </div>
 

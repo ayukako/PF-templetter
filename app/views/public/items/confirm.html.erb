@@ -29,7 +29,7 @@
             <div>
               <%= simple_format(@item.content, style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
             </div>
-            <div id="livepreview" class="livepreview"></div>
+            <!--<div id="livepreview" class="livepreview"></div>-->
             <script>
             $('#form_id').submit(function(){
               var message =  $("#liveeditor").val()
@@ -43,23 +43,22 @@
             </script>
         </td>
         <td>
-            <%= form_with scope: 'item', url:new_public_customers_item_order_path(@item.id), method: :get do |f| %>
+            <%= form_with scope: 'item', url:new_public_customers_item_order_path(@item.id), method: :get, class: "mb-3" do |f| %>
                 <%= f.hidden_field :envelope_id, value: @envelope.id %>
                 <%= f.hidden_field :paper_id, value: @paper.id %>
                 <%= f.hidden_field :font_id, value: @font.id %>
                 <%= f.hidden_field :message, value: @message %>
-            <%= f.submit '郵送先/注文情報を入力する'%>
+            <%= f.submit '郵送先/注文情報を入力する', class: "confirm-btn" %>
             <% end %>
-        </td>
-  </tbody>
-</table>
-
-            <%= form_with scope: 'item', url:edit_public_customers_item_path(@item.id), method: :get do |f| %>
+            <%= form_with scope: 'item', url:edit_public_customers_item_path(@item.id), method: :get, class: "mb-3" do |f| %>
                 <%= f.hidden_field :envelope_id, value: @envelope.id %>
                 <%= f.hidden_field :paper_id, value: @paper.id %>
                 <%= f.hidden_field :font_id, value: @font.id %>
                 <%= f.hidden_field :article_id, value: @article_id %>
                 <%= f.hidden_field :message, value: @message %>
-            <%= f.submit 'もう一度手紙を作り直す'%>
+            <%= f.submit 'もう一度手紙を作り直す', class: "confirm-btn" %>
           <% end %>
-<td><%= link_to "  手紙を作成するのをやめる", destroy_all_public_customers_item_path(@item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>
+          <div><%= link_to "  手紙を作成するのをやめる", destroy_all_public_customers_item_path(@item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger confirm-btn" %></div>
+        </td>
+  </tbody>
+</table>

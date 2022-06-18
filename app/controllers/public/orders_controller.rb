@@ -7,17 +7,6 @@ class Public::OrdersController < ApplicationController
   def confirm
     @item =  Item.find(params[:item_id])
     @order = Order.new(order_params)
-
-    # @order.postage = 800
-    # if params[:order][:select_address] == "1"
-    #   @order.postal_code = customer.postal_code
-    #   @order.address = current_customer.address
-    #   @order.name = current_customer.last_name + current_customer.first_name
-    # elsif params[:order][:select_address] == "2"
-    #   @order.sender_postal_code = params[:order][:sender_postal_code]
-    #   @order.sender_address = params[:order][:sender_address]
-    #   @order.sender = params[:order][:sender]
-    # end
   end
 
   def thanks
@@ -32,6 +21,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @item =  Item.find(params[:item_id])
+    @order = Order.new(order_params)
   end
 
 

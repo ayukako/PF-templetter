@@ -8,7 +8,7 @@
         <%= f.collection_select :envelope_id, @envelopes, :id, :name, {prompt: "封筒を選ぶ" } %>
         <%= f.collection_select :paper_id,  @papers, :id, :name, {prompt: "便箋を選ぶ" } %>
         <%= f.collection_select :font_id, @fonts, :id, :name, {prompt: "フォントを選ぶ" } %>
-        <%= f.collection_select :article_id, @articles, :content, :name, {prompt: "文章を選ぶ"} %>
+        <%= f.collection_select :article_content, @articles, :content, :name, {prompt: "文章を選ぶ"} %>
         <%= f.hidden_field :message, value: @articles %>
       <% if current_customer %>
         <%= f.submit '手紙を一時保存する' %>
@@ -33,7 +33,7 @@
 
             <div class="preview">
                 <p style="background-color:Black; color:white;">プレビュー</p>
-                <div id="livepreview" class="livepreview"></div>
+                <!--<div id="livepreview" class="livepreview"></div>-->
             </div>
 
         </div>

@@ -41,7 +41,7 @@
                 height: 70%;
             }
 
-            .livepreview {
+            #livepreview {
                 width: 514px; // 257mm
                 height: 364px; // 182mm
                 // B5サイズ
@@ -91,3 +91,7 @@
             .table.order-table th{
                 width: 30%;
             }
+            
+            .confirm-btn {
+                width: 208px;
+            } 

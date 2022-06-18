@@ -24,18 +24,25 @@ class Public::ItemsController < ApplicationController
       @envelope = Envelope.find(params[:item][:envelope_id])
       @paper = Paper.find(params[:item][:paper_id])
       @font = Font.find(params[:item][:font_id])
-      @article = Article.find_by(content: params[:item][:article_id])
+      if params[:item][:article_id].nil?
+        @article = Article.find_by(content: params[:item][:article_content])
+      else
+        @article = Article.find(params[:item][:article_id])
+      end
       @message = params[:item][:message]
-      @item = Item.new(envelope: @envelope, paper: @paper, font: @font, article: @article, content: @message)
+      @item = Item.new(envelope: @envelope, paper: @paper, font: @font, article_id: @article.id, content: @message)
       @item.customer_id = current_customer.id
-
+      @artcile_id = @article.id
       @item.save
+      redirect_to confirm_public_customers_items_path(item_id: @item.id)
     else
       @item = Item.find(params[:item_id])
       @envelope = @item.envelope
       @paper = @item.paper
       @font = @item.font
       @article = @item.article
+      @article_id = @item.article_id
+      @message = @item.content
     end
   end
 
@@ -56,12 +63,12 @@ class Public::ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
     @item.customer_id = current_customer.id
-    @article = Article.find_by(content: params[:item][:article_id])
+    @article = Article.find(params[:item][:article_id])
     @item.update!(
     envelope_id: params[:item][:envelope_id],
     paper_id: params[:item][:paper_id],
     font_id: params[:item][:font_id],
-    article: @article,
+    article_id: @article.id,
     content: params[:item][:message]
     )
     redirect_to confirm_public_customers_items_path(item_id: @item.id)
