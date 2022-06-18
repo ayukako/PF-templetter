@@ -11,18 +11,6 @@
             .subtitle {
                 width: 100%;
             }
-            // .container{
-            //     display: flex;
-            //     flex-wrap: wrap;
-            // }
-
-            // .flex{
-            //     width: 350px;
-            // }
-            // .payment {
-            //     width: 100%;
-            // }
-
             #liveeditor{
                 margin: 10px;
             }
@@ -91,7 +79,12 @@
             .table.order-table th{
                 width: 30%;
             }
-            
+
             .confirm-btn {
                 width: 208px;
-            } 
+             }
+
+
+           .background-color{
+               background-color: rgba(255, 255, 128, .5);
+           }

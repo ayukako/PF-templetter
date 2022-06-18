@@ -1,2 +1,76 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>手紙の内容</h2>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h4>郵送先</h4>
+      <table class="table">
+          <tr>
+            <td>郵便番号：<%= @order.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所：<%= @order.address %></td>
+          </tr>
+          <tr>
+            <td>宛名：<%= @order.name %></td>
+          </tr>
+      </table>
+    </div>
+    <div class="col">
+      <table class="table">
+        <h4>送り主</h4>
+          <tr>
+            <td>郵便番号：<%= @order.sender_postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所：<%= @order.sender_address %></td>
+          </tr>
+          <tr>
+            <td>宛名：<%= @order.sender %></td>
+          </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<table class = "table">
+    <tr>
+      <th>封筒</th>
+      <th>便箋</th>
+      <th>フォント</th>
+      <th>文章</th>
+    </tr>
+      <tr>
+        <td>
+            <%= @item.envelope.name %>
+            <%= image_tag @item.envelope.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @item.paper.name %>
+            <%= image_tag @item.paper.image, size: "150x100" %>
+        </td>
+        <td>
+            <%= @item.font.name %>
+            <%= image_tag @item.font.image, size: "150x100" %>
+            <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
+        </td>
+        <td>
+            <div>
+              <%= simple_format(@item.content, style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
+            </div>
+            <div id="livepreview" class="livepreview"></div>
+            <script>
+            $('#form_id').submit(function(){
+              var message =  $("#liveeditor").val()
+              var input = $("<input>")
+                .attr("type", "hidden")
+                .attr("name", "message").val(message);
+            $('#form_id').append(input);
+                    // バリデーションチェックや、データの加工を行う
+                    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+            })
+            </script>
+        </td>
+      </tr>
+    </table>
+
+<button type="button" class="btn btn-outline-primary"><%= link_to "戻る", admin_root_path %></button>

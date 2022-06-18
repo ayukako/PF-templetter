@@ -55,7 +55,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
         member do
           delete :destroy_all
         end
-
         resources :orders, only: [:new, :create, :show] do
           collection do
             get :confirm

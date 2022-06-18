@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
 
   def show
     @item =  Item.find(params[:item_id])
-    @order = Order.new(order_params)
+    @order = Order.find(params[:id])
   end
 
 
