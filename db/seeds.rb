@@ -12,7 +12,7 @@ admins = [
 
 admins.each do |admin|
   # 一度ユーザーをメールアドレスで検索
-  admin_data = User.find_by(email: admin[:email])
+  admin_data = Admin.find_by(email: admin[:email])
   # 該当ユーザーがいなければ、createする
   if admin_data.nil?
     Admin.create(
