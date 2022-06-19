@@ -6,7 +6,7 @@ class Font < ApplicationRecord
 
     FONT_FAMILY = ["Kawaii", "Beauty", "Kuse"]
     FONT_NAMES = self.pluck(:name)
-    unless FONT_NAMES.nil?
+    unless FONT_NAMES.blank?
         array = [FONT_NAMES, FONT_FAMILY].transpose
         FONTS = Hash[*array.flatten]
     end
