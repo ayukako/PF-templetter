@@ -1,46 +1,44 @@
 <div class= "row" >
   <div class= "container">
     <h2>注文情報を確認する</h2>
-
     <table class = "table">
-    <tr>
-      <th>封筒</th>
-      <th>便箋</th>
-      <th>フォント</th>
-      <th>文章</th>
-    </tr>
+      <tr>
+        <th>封筒</th>
+        <th>便箋</th>
+        <th>フォント</th>
+        <th>文章</th>
+      </tr>
       <tr>
         <td>
-            <%= @item.envelope.name %>
-            <%= image_tag @item.envelope.image, size: "150x100" %>
+          <%= @item.envelope.name %>
+          <%= image_tag @item.envelope.image, size: "150x100" %>
         </td>
         <td>
-            <%= @item.paper.name %>
-            <%= image_tag @item.paper.image, size: "150x100" %>
+          <%= @item.paper.name %>
+          <%= image_tag @item.paper.image, size: "150x100" %>
         </td>
         <td>
-            <%= @item.font.name %>
-            <%= image_tag @item.font.image, size: "150x100" %>
-            <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
+          <%= @item.font.name %>
+          <%= image_tag @item.font.image, size: "150x100" %>
+          <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
         </td>
         <td>
-            <div>
-              <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
-            </div>
-            <div id="livepreview" class="livepreview"></div>
+          <div id="livepreview">
+            <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
+          </div>
             <script>
-            $('#form_id').submit(function(){
-              var message =  $("#liveeditor").val()
-              var input = $("<input>")
-                .attr("type", "hidden")
-                .attr("name", "message").val(message);
-            $('#form_id').append(input);
-                    // バリデーションチェックや、データの加工を行う
-                    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
-            })
+              $('#form_id').submit(function(){
+                var message =  $("#liveeditor").val()
+                var input = $("<input>")
+                  .attr("type", "hidden")
+                  .attr("name", "message").val(message);
+              $('#form_id').append(input);
+                      // バリデーションチェックや、データの加工を行う
+                      //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+              })
             </script>
         </td>
-      </tr>
+        </tr>
     </table>
 
 <div class="container">
@@ -59,7 +57,6 @@
       <%= @order.name %>
     </div>
   </div>
-
   <div class="container">
   <div class="row">
     <h4>送り主</h4>
@@ -76,7 +73,6 @@
       <%= @order.sender %>
     </div>
   </div>
-
   <div class="container">
   <div class="row">
     <div class="col">
@@ -89,10 +85,7 @@
     </div>
   </div>
 
-
-
 <%= form_with url: public_customers_item_orders_path(@item), method: :post do |f| %>
-
   <%= f.hidden_field :payment_method, value: @order.payment_method %>
   <%= f.hidden_field :postal_code, value: @order.postal_code %>
   <%= f.hidden_field :address,value: @order.address %>

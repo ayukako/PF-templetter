@@ -42,8 +42,8 @@ $(function() {
   function change_background_image() {
     const id = $("#item_paper_id").val()
     const preview = $("#livepreview")
-    // ピンク　ブラウン　オフホワイト
-    if(id == 1){
+    // ピンク　ブルー　オフホワイト
+    if(id == 4){
       preview.css("background-image",'url("/assets/images/paper_pink.jpg")')
     }else if(id == 2){
       preview.css("background-image",'url("/assets/images/paper_blue.jpg")')

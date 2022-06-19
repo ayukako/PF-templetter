@@ -1,80 +1,38 @@
- <h2>郵送先/注文情報入力</h2><div class="container">
+<h2>郵送先/注文情報入力</h2>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= form_with  url: confirm_public_customers_item_orders_path(@item), method: :get do |f| %>
+          <h4>支払い方法</h4>
+          <%= f.radio_button :payment_method, "クレジットカード" %>
+          <%= f.label :payment_method, "クレジットカード" %>
+          <%= f.radio_button :payment_method, "銀行振込" %>
+          <%= f.label :payment_method, "銀行振込" %>
+          <p>本来はここでクレジットカード情報や口座情報を入力できるようにしますが<br/>
+          ポートフォリオのため割愛しております。</p>
 
-  <div class="row">
-    <div class="col">
+          <h4>郵送先情報</h4>
+          <p>※数字は半角でご入力ください</p>
+          <%= f.label :郵便番号 %>
+          <%= f.text_field :postal_code, required: true, autocomplete: "postal_code" %><br />
+          <%= f.label :住所 %>
+          <%= f.text_field :address, required: true, autocomplete: "address" %><br />
+          <%= f.label :宛名 %>
+          <%= f.text_field :name, required: true, autocomplete: "name" %><br />
 
-    <table class = "table table-bordered order-table">
-      <tr>
-        <th>封筒</th>
-        <td>
-          <%= @item.envelope.name %>
-        </td>
-      </tr>
-      <tr>
-        <th>便箋</th>
-        <td>
-          <%= @item.paper.name %>
-        </td>
-      </tr>
-      <tr>
-        <th>フォント</th>
-        <td>
-          <%= @item.font.name %>
-        </td>
-      </tr>
-      <tr>
-        <th>文章</th>
-        <td>
-            <div>
-              <%= @item.content %>
-            </div>
-        </td>
-      </tr>
-      <tr>
-        <th>お支払い</th>
-        <td>
-          300円（税込）
-        </td>
-      </tr>
-    </table>
-    </div>
-    <div class="col">
-
-
-<%= form_with  url: confirm_public_customers_item_orders_path(@item), method: :get do |f| %>
-<h4>支払い方法</h4>
-<%= f.radio_button :payment_method, "クレジットカード" %>
-<%= f.label :payment_method, "クレジットカード" %>
-<%= f.radio_button :payment_method, "銀行振込" %>
-<%= f.label :payment_method, "銀行振込" %>
-<p>本来はここでクレジットカード情報や口座情報を入力できるようにしますが<br/>
-ポートフォリオのため割愛しております。</p>
-
-
-<h4>郵送先情報</h4>
-<p>※数字は半角でご入力ください</p>
-<%= f.label :郵便番号 %>
-<%= f.text_field :postal_code, autocomplete: "postal_code" %><br />
-<%= f.label :住所 %>
-<%= f.text_field :address, autocomplete: "address" %><br />
-<%= f.label :宛名 %>
-<%= f.text_field :name, autocomplete: "name" %><br />
-
-<h4>送り主情報</h4>
-<p>※数字は半角でご入力ください</p>
-<%= f.label :郵便番号 %>
-<%= f.text_field :sender_postal_code, autocomplete: "postal_code" %><br />
-<%= f.label :住所 %>
-<%= f.text_field :sender_address, autocomplete: "address" %><br />
-<%= f.label :宛名 %>
-<%= f.text_field :sender, autocomplete: "name" %><br />
-
-
-<%= f.submit "確認画面へ進む" %>
-
-<% end %>
+          <h4>送り主情報</h4>
+          <p>※数字は半角でご入力ください</p>
+          <%= f.label :郵便番号 %>
+          <%= f.text_field :sender_postal_code, required: true, autocomplete: "postal_code" %><br />
+          <%= f.label :住所 %>
+          <%= f.text_field :sender_address, required: true, autocomplete: "address" %><br />
+          <%= f.label :宛名 %>
+          <%= f.text_field :sender, required: true, autocomplete: "name" %><br />
+          <h4>お支払い額：３００円（税込）</h4>
+        <%= f.submit "確認画面へ進む" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
 
 

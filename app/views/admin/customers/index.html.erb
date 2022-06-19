@@ -1,46 +1,44 @@
 <div class= "row" >
   <div class= "container">
-
-<h2>会員一覧</h2>
-<table class= "table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>郵便番号</th>
-      <th>住所</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <td></td>
-        <td><%= customer.id %></td>
-        <td>
-          <%= customer.last_name %><%= customer.first_name %>
-        </td>
-        <td>
-          <%= customer.email %>
-        </td>
-        <td>
-          <%= customer.postal_code %>
-        </td>
-        <td>
-          <%= customer.address %>
-        </td>
-        <td>
-          <% if customer.is_active == true %> <p>有効</p>
-          <% else %> <p>退会</p>
+    <h2>会員一覧</h2>
+      <table class= "table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td></td>
+              <td><%= customer.id %></td>
+              <td>
+                <%= customer.last_name %><%= customer.first_name %>
+              </td>
+              <td>
+                <%= customer.email %>
+              </td>
+              <td>
+                <%= customer.postal_code %>
+              </td>
+              <td>
+                <%= customer.address %>
+              </td>
+              <td>
+                <% if customer.is_active == true %> <p>有効</p>
+                <% else %> <p>退会</p>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
           <% end %>
-        </td>
-        <td></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-</div>
+        </tbody>
+      </table>
+  </div>
 </div>

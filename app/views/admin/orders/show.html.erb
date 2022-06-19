@@ -54,10 +54,9 @@
             <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
         </td>
         <td>
-            <div>
+            <div id="livepreview">
               <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
             </div>
-            <div id="livepreview" class="livepreview"></div>
             <script>
             $('#form_id').submit(function(){
               var message =  $("#liveeditor").val()

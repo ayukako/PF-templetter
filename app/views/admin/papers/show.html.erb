@@ -1,15 +1,12 @@
-
-  <div class='containner'>
+<div class='containner'>
   <div class='row'>
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-
-<h2>便箋詳細</h2>
-
-  <%= image_tag @paper.image, size: "200x300" %>
-  <h4>便箋ID</h4>
-  <p><%= @paper.id %></p>
-  <h4>便箋名</h4>
-  <p><%= @paper.name %></p>
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>便箋詳細</h2>
+      <%= image_tag @paper.image, size: "200x300" %>
+      <h4>便箋ID</h4>
+      <p><%= @paper.id %></p>
+      <h4>便箋名</h4>
+      <p><%= @paper.name %></p>
 
 
-<td><%= link_to "削除する", admin_paper_path(@paper.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td
+<%= link_to "削除する", admin_paper_path(@paper.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %>

@@ -39,26 +39,25 @@
       <th>フォント</th>
       <th>文章</th>
     </tr>
-      <tr>
-        <td>
-            <%= @item.envelope.name %>
-            <%= image_tag @item.envelope.image, size: "150x100" %>
+    <tr>
+      <td>
+          <%= @item.envelope.name %>
+          <%= image_tag @item.envelope.image, size: "150x100" %>
         </td>
         <td>
-            <%= @item.paper.name %>
-            <%= image_tag @item.paper.image, size: "150x100" %>
+          <%= @item.paper.name %>
+          <%= image_tag @item.paper.image, size: "150x100" %>
         </td>
         <td>
-            <%= @item.font.name %>
-            <%= image_tag @item.font.image, size: "150x100" %>
-            <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
+          <%= @item.font.name %>
+          <%= image_tag @item.font.image, size: "150x100" %>
+          <input id="item_font_id" value="<%= @item.font_id %>" style="display: none;"></input>
         </td>
         <td>
-            <div>
-              <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
-            </div>
-            <div id="livepreview" class="livepreview"></div>
-            <script>
+          <div id="livepreview">
+            <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
+          </div>
+          <script>
             $('#form_id').submit(function(){
               var message =  $("#liveeditor").val()
               var input = $("<input>")
@@ -68,10 +67,10 @@
                     // バリデーションチェックや、データの加工を行う
                     //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
             })
-            </script>
+          </script>
         </td>
-      </tr>
-    </table>
+    </tr>
+</table>
 
 <button type="button" class="btn btn-outline-primary"><%= link_to "戻る", public_customers_path %></button>
 

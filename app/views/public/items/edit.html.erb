@@ -12,30 +12,31 @@
   </div>
 </div>
 
-        <div style="editorwrapper">
-            <div class="editor">
-                <p style="background-color:Black; color:white;">入力フォーム</p>
-                <form name="js">
-                    <p>手紙の内容</p>
-                    <textarea id="liveeditor" name="item[message]" rows="10" cols="80">
-                      <%= @item.content %>
-                    </textarea>
-                </form>
-            </div>
+  <div style="editorwrapper">
+    <div class="editor">
+      <p style="background-color:Black; color:white;">入力フォーム</p>
+        <form name="js">
+          <p>手紙の内容</p>
+          <textarea id="liveeditor" name="item[message]" rows="10" cols="80">
+            <%= @item.content %>
+          </textarea>
+        </form>
+    </div>
 
-            <div class="preview">
-                <p style="background-color:Black; color:white;">プレビュー</p>
-                <p><%= Article.find(@selected_article_id).name %></p>
-                <div id="livepreview" class="livepreview"></div>
-            </div>
+    <div class="preview">
+      <p style="background-color:Black; color:white;">プレビュー</p>
+      <p><%= Article.find(@selected_article_id).name %></p>
+      <div id="livepreview" class="livepreview"></div>
+    </div>
 
-        </div>
-<script>
-$('#form_id').submit(function(){
-  const hidden_field = document.getElementById('item_message');
-  hidden_field.value = document.getElementById('livepreview').innerText;
-    // バリデーションチェックや、データの加工を行う。
-    //
-    //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
-})
-</script>
+  </div>
+
+  <script>
+    $('#form_id').submit(function(){
+      const hidden_field = document.getElementById('item_message');
+      hidden_field.value = document.getElementById('livepreview').innerText;
+        // バリデーションチェックや、データの加工を行う。
+        //
+        //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+    })
+  </script>

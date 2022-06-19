@@ -5,7 +5,12 @@ class Order < ApplicationRecord
 
   has_one_attached :image
 
-  validates :postal_code, :address, :name , :sender_postal_code, :sender_address, :sender, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :name , presence: true
+  validates :sender_postal_code, presence: true
+  validates :sender_address, presence: true
+  validates :sender, presence: true
 
   #enum payment_method: { credit_card: 0, transfer: 1 }
 end
