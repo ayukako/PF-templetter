@@ -22,6 +22,8 @@ class Admin::PapersController < ApplicationController
     redirect_to admin_items_path
   end
 
+private
+
   def paper_params
     params.require(:paper).permit(:name, :image)
   end

@@ -22,6 +22,9 @@ class Admin::EnvelopesController < ApplicationController
     redirect_to admin_items_path
   end
 
+
+ private
+
   def envelope_params
     params.require(:envelope).permit(:name, :image)
   end

@@ -1,73 +1,53 @@
-
-  <div class='container'>
-  <div class='row'>
-  <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-
 <h2>マイページ</h2>
+<div class="container">
+  <div class="row">
 
-<h3>登録情報</h3>
+    <div class="col">
+      <h4>登録情報</h4>
+      <table class="table">
+          <tr>
+            <td>氏名：<%= @customer.last_name %><%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td>郵便番号：<%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td>住所：<%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス：<%= @customer.email %></td>
+          </tr>
+      </table>
+      <%= link_to '退会する', unsubscribe_public_customers_path, class: "btn btn-sm btn-danger" %>
+    </div>
+    <div class="col">
+      <h4>注文履歴一覧</h4>
+      <table class="table">
+          <tr>
+            <th>注文日時</th>
+            <th>宛名</th>
+            <th>注文詳細</th>
+            <th>お支払額</th>
+          </tr>
+          <% @orders.each do |order| %>
+            <tr>
+              <th>
+                <%= order.created_at.strftime("%Y/%m/%d") %>
+              </th>
+              <th>
+                <%= order.name %>
+              </th>
+              </th>
+              <th>
+                <%= link_to "詳細を見る",  public_customers_item_order_path(order.item.id, order.id) %>
+              </th>
+              <th>
+                ３００円（税込）
+              </th>
+            </tr>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 
-<table class="table">
-  <tbody>
-    <tr>
-      <td>氏名</td>
-      <td><%= @customer.last_name %></td>
-      <td><%= @customer.first_name %></td>
-    </tr>
-    <tr>
-      <td>郵便番号</td>
-      <td><%= @customer.postal_code %></td>
-    </tr>
-    <tr>
-      <td>住所</td>
-      <td><%= @customer.address %></td>
-    </tr>
-    <tr>
-      <td>メールアドレス</td>
-      <td><%= @customer.email %></td>
-    </tr>
-  </tbody>
-</table>
-
-  <%= link_to '退会する', unsubscribe_public_customers_path, class: "btn btn-sm btn-danger" %>
-
-
-<h2>注文履歴一覧</h2>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>注文日時</th>
-      <th>封筒</th>
-      <th>便箋</th>
-      <th>フォント</th>
-      <th>注文詳細</th>
-      <th>お支払額</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <th>
-          <%= order.created_at.strftime('%Y/%m/%d') %>
-        </th>
-        <th>
-          <%= order.item.envelope.name %>
-        </th>
-        <th>
-          <%= order.item.paper.naem %>
-        </th>
-        <th>
-          <%= order.item.font.name %>
-        </th>
-        <th>
-          <%= link_to "文章を表示する", public_orders_path(order.id) %>
-        </th>
-        <th>
-          <%= order.payment %>
-        </th>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

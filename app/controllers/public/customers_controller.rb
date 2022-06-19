@@ -7,6 +7,13 @@ class Public::CustomersController < ApplicationController
   def unsubscribe
   end
 
+  def customer_index
+
+
+    @items = current_customer.items
+
+  end
+
   def withdraw
     @customer = current_customer
     @customer.update(is_active: false)

@@ -1,0 +1,25 @@
+
+<div class= "row" >
+  <div class= "container">
+    <h2>未発注の手紙一覧</h2>
+    <table class= "table">
+      <tr>
+        <th>作成日時</th>
+        <th>封筒</th>
+        <th>便箋</th>
+        <th>フォント</th>
+        <th>手紙の内容</th>
+      </tr>
+        <% @items.each do |item| %>
+          <% if item.order.nil? %>
+        <th><%= item.created_at.strftime("%Y/%m/%d") %></th>
+        <th><%= item.envelope.name %></th>
+        <th><%= item.paper.name %></th>
+        <th><%= item.font.name %></th>
+        <th><%= link_to "#{item.article.name} (内容を見る)", confirm_public_customers_items_path(item_id: item.id) %></th>
+      </tr>
+          <% end %>
+        <% end %>
+    </table>
+  </div>
+</div>

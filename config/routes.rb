@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+   root to: "public/homes#top"
+
+
   namespace :admin do
     get 'customers/index'
   end
@@ -38,25 +41,27 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   namespace :public do
-    resources :items, except: [:destroy] do
-      collection do
-        get :destroy_all
-      end
-    end
     resource :customers, only: [:show] do
       collection do
+        get :customer_index
         get :unsubscribe
         patch :withdraw
       end
-    end
-    resources :orders, only: [:new, :create, :show] do
-      collection do
-        post :confirm
-        get :thanks
+      resources :items, except: [:show, :destroy] do
+        collection do
+          get :confirm
+          post :confirm
+        end
+        member do
+          delete :destroy_all
+        end
+        resources :orders, only: [:new, :create, :show] do
+          collection do
+            get :confirm
+            get :thanks
+          end
+        end
       end
     end
-    resources :items_choices, only: [:index]
   end
-
-
 end

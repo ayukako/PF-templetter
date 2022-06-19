@@ -1,1 +1,90 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+            *{
+                font-family: Meiryo;
+                text-align: center;
+                margin: 0;
+                padding: 0;
+            }
+
+            .subtitle {
+                width: 100%;
+            }
+            #liveeditor{
+                margin: 10px;
+            }
+
+            .bottomspace{
+                margin-bottom: 20px;
+            }
+
+            .editorwrapper{
+
+            }
+
+            .editor{
+                float: left;
+                width: 50%;
+                height: 70%;
+            }
+
+            #livepreview {
+                width: 514px; // 257mm
+                height: 364px; // 182mm
+                // B5サイズ
+             }
+
+            .preview{
+                float: right;
+                width: 50%;
+                background-color: DDDDDD;
+
+            }
+
+            .button{
+                border: 1px solid plum;
+                color: black;
+                line-height: 50px;
+                width: 200px;
+                margin: 20px;
+                background-color: aliceblue;
+                padding: 5px 10px 5px 10px;
+                transition: 0.3s;
+            }
+
+            .button:hover{
+                border: 1px solid mediumpurple;
+                color: white;
+                transition: 0.3s;
+                background-color: mediumpurple;
+            }
+
+            .table.order-table{
+                width: 60%;
+            }
+
+            .table.order-table th{
+                width: 30%;
+            }
+
+            .confirm-btn {
+                width: 208px;
+             }
+
+            .background-translucent {
+                background-image: url('/assets/images/background.jpg');
+                background-size: 100%,100%;
+                background-color:rgba(255,255,255,0.8);
+                background-blend-mode:lighten;
+            }
+
+
+            footer{
+                width: 100%;
+                height: 100px;
+                background-color: #174a5c;
+                color: white;
+                text-align: center;
+                margin-top: 100px;
+            }

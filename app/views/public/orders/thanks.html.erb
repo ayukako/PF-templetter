@@ -1,2 +1,10 @@
-<h1>Public::Orders#thanks</h1>
-<p>Find me in app/views/public/orders/thanks.html.erb</p>
+<h1>ご注文ありがとうございました！</h1>
+
+<%= image_tag 'thanks_flog.jpg', size: '640x480' %>
+
+<p>※３営業日以内に発送いたします。<br>
+日付指定やその他お問合せはこちらまでお願いします。<br>
+０００−０００−００００</p>
+
+<button type="button" class="btn btn-outline-primary"><%= link_to "注文情報を確認する", public_customers_path %></button>
+<button type="button" class="btn btn-outline-primary"><%= link_to "商品一覧ページにいく", public_customers_items_path %></button>

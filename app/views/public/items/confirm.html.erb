@@ -1,0 +1,59 @@
+
+<div class= "row" >
+  <div class= "container">
+    <h2>未完成の手紙</h2>
+    <table class = "table">
+      <thead>
+        <th>封筒</th>
+        <th>便箋</th>
+        <th>フォント</th>
+        <th>文章</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= @envelope.name %>
+            <%= image_tag @envelope.image, size: "150x100" %>
+          </td>
+          <td>
+            <%= @paper.name %>
+            <%= image_tag @paper.image, size: "150x100" %>
+          </td>
+          <td>
+            <%= @font.name %>
+            <%= image_tag @font.image, size: "150x100" %>
+          </td>
+          <td>
+            <div id="livepreview">
+            <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
+          </div>
+            <script>
+              $('#form_id').submit(function(){
+                var message =  $("#liveeditor").val()
+                var input = $("<input>")
+                  .attr("type", "hidden")
+                  .attr("name", "message").val(message);
+              $('#form_id').append(input);
+                      // バリデーションチェックや、データの加工を行う
+                      //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+              })
+            </script>
+          </td>
+      </tbody>
+    </table>
+      <%= form_with scope: 'item', url:new_public_customers_item_order_path(@item.id), method: :get, class: "mb-3" do |f| %>
+        <%= f.hidden_field :envelope_id, value: @envelope.id %>
+        <%= f.hidden_field :paper_id, value: @paper.id %>
+        <%= f.hidden_field :font_id, value: @font.id %>
+        <%= f.hidden_field :message, value: @message %>
+      <%= f.submit '郵送先/注文情報を入力する', class: "confirm-btn" %>
+      <% end %>
+      <%= form_with scope: 'item', url:edit_public_customers_item_path(@item.id), method: :get, class: "mb-3" do |f| %>
+        <%= f.hidden_field :envelope_id, value: @envelope.id %>
+        <%= f.hidden_field :paper_id, value: @paper.id %>
+        <%= f.hidden_field :font_id, value: @font.id %>
+        <%= f.hidden_field :article_id, value: @article_id %>
+        <%= f.hidden_field :message, value: @message %>
+        <%= f.submit 'もう一度手紙を作り直す', class: "confirm-btn" %>
+      <% end %>
+  <div><%= link_to "  手紙を作成するのをやめる", destroy_all_public_customers_item_path(@item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger confirm-btn" %></div>

@@ -1,21 +1,20 @@
-<div class="cover align-middle">
+<div class="background-root cover align-middle">
   <div class="text-center">
-    <h2 class="title mb-2">だいすきなあの人へ<br>お世話になったあの人へ<br>手書き（風）のお手紙を贈りませんか？</h2>
+    <h2 class="title mb-2">だいすきなあの人へ<br>お世話になったあの人へ<br>手書き（風）の手紙を贈りませんか？</h2>
+    <%= image_tag 'top.jpg', size: '320x240' %>
+      <p>テンプ・レターでは封筒、便箋、フォントのデザインを選び<br>
+      手書きのようなお手紙をベットで寝転がりながら作成いただけます。<br>
+      また、郵送先やご自身の情報を入力いただくことで、<br>
+      郵送手配までテンプ・レターがお引き受けいたします。<br>
+      文章のテンプレートもご用意しておりますので<br>
+      手紙は書きたいけれど、書き方がわからない！という方でも簡単です。<br>
+      <br>
+      令和・コロナ禍の今だからこそ、SNSとは違った手紙の温もりを<br>
+      大切な人へ届けてみませんか？<br>
+      ※ご利用には、会員登録が必要です（会員登録は無料です）<br></p>
+
+    <%= link_to "どんなデザインの封筒やフォントがあるか見てみる", public_customers_items_path %><br>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "新規登録する", new_customer_registration_path %></button><br>
+    <button type="button" class="btn btn-outline-primary"><%= link_to "ログインする", new_customer_session_path %></button><br>
   </div>
 </div>
-
-
-<p>テンプ・レターでは封筒、便箋、フォントのデザインを選び<br>
-手書きのようなお手紙をベットで寝転がりながら作成いただけます。<br>
-また、郵送先やご自身の情報を入力いただくことで、<br>
-郵送手配までテンプ・レターがお引き受けいたします。<br>
-文章のテンプレートもご用意しておりますので<br>
-手紙は書きたいけれど、書き方がわからない！という方でも簡単です。<br>
-<br>
-令和・コロナ禍の今だからこそ、SNSとは違った手紙の良さを<br>
-実感してみませんか？<br>
-※ご利用には、会員登録が必要です（会員登録は無料です）<br></p>
-
-<%= link_to "どんなデザインの封筒やフォントがあるか見てみる", public_items_choices_path %>
-<button type="button" class="btn btn-outline-primary"><%= link_to "新規登録する", new_customer_registration_path %></button>
-<button type="button" class="btn btn-success"><%= link_to "ログインする", new_customer_session_path %></button>
