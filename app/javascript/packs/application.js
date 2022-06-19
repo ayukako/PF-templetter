@@ -52,7 +52,7 @@ $(function() {
     }
    }
 
-  //
+
   function change_article() {
   var selectedOptions = $(this).children(":selected").val();
     $("#liveeditor").text(selectedOptions)

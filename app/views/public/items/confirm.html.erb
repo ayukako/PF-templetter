@@ -25,12 +25,13 @@
             <%= image_tag @font.image, size: "150x100" %>
         </td>
         <td>
-
             <div>
-              <%= simple_format(@item.content, style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
+              <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@font.name]};", id: "livepreview") %>
             </div>
-            <!--<div id="livepreview" class="livepreview"></div>-->
+            <div id="livepreview" class="livepreview"></div>
+
             <script>
+
             $('#form_id').submit(function(){
               var message =  $("#liveeditor").val()
               var input = $("<input>")
@@ -40,6 +41,7 @@
                     // バリデーションチェックや、データの加工を行う
                     //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
             })
+
             </script>
         </td>
   </tbody>

@@ -25,7 +25,7 @@
         </td>
         <td>
             <div>
-              <%= simple_format(@item.content, style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
+              <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
             </div>
             <div id="livepreview" class="livepreview"></div>
             <script>
