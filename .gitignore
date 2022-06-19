@@ -27,6 +27,9 @@
 !/storage/.keep
 
 /public/assets
+!/public/assets/fonts
+!/public/assets/images
+
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
