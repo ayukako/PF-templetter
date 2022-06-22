@@ -21,15 +21,15 @@ class Public::ItemsController < ApplicationController
 
   def confirm
     unless params[:item_id]
-      @envelope = Envelope.find(params[:item][:envelope_id])
-      @paper = Paper.find(params[:item][:paper_id])
-      @font = Font.find(params[:item][:font_id])
-      if params[:item][:article_id].nil?
-        @article = Article.find_by(content: params[:item][:article_content])
+      @envelope = Envelope.find(confirm_params[:envelope_id])
+      @paper = Paper.find(confirm_params[:paper_id])
+      @font = Font.find(confirm_params[:font_id])
+      if confirm_params[:article_id].nil?
+        @article = Article.find_by(content: confirm_params[:article_content])
       else
-        @article = Article.find(params[:item][:article_id])
+        @article = Article.find(confirm_params[:article_id])
       end
-      @message = params[:item][:message]
+      @message = confirm_params[:message]
       @item = Item.new(envelope: @envelope, paper: @paper, font: @font, article_id: @article.id, content: @message)
       @item.customer_id = current_customer.id
       @artcile_id = @article.id
@@ -88,5 +88,10 @@ private
   def item_params
     params.require(:item).permit(:envelope_id, :paper_id,:font_id, :article_id, :message)
   end
+
+  def confirm_params
+    params.require(:item).permit(:envelope_id, :paper_id,:font_id, :article_id,:article_content, :message)
+  end
+
 
 end
