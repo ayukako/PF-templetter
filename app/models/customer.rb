@@ -8,8 +8,8 @@ class Customer < ApplicationRecord
   has_many :orders
   has_many :items
 
-  def active_for_authentication?
-    super && (is_active == true)
-  end
+  # def active_for_authentication?
+  #   super && (is_active == true)
+  # end
 
 end

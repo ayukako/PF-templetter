@@ -67,6 +67,9 @@
         </div>
       </nav>
     </header>
+    <% flash.each do |message_type, message| %>
+　　<div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
       <main class="background-translucent mb-auto">
         <%= yield %>
       </main>

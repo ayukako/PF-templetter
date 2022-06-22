@@ -1,90 +1,144 @@
 @import '~bootstrap/scss/bootstrap';
 
+    dl.sp-table{
+        display: none;
+    }
+    table.pc-table{
+        display: block;
+    }
 
-            *{
-                font-family: Meiryo;
-                text-align: center;
-                margin: 0;
-                padding: 0;
-            }
+/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
+@media screen and (max-width:1024px) {
+    .confirm-btn {
+        width: 208px;
+    }
+    #livepreview {
+        width: 514px; // 257mm*2
+        height: 364px; // 182mm*2
+        // B5サイズ
+    }
+    body, html {
+        font-size: 1em;
+    }
+  }
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
 
-            .subtitle {
-                width: 100%;
-            }
-            #liveeditor{
-                margin: 10px;
-            }
+    dl.sp-table{
+        display: block;
+    }
+    table.pc-table{
+        display: none;
+    }
+    .confirm-btn {
+        width: 108px;
+    }
+    #livepreview {
+        width: 360px; // 257mm*1.5
+        height: 255px; // 182mm*1.5
+        // B5サイズ
+    }
+    title, body, html {
+        font-size: 0.6em;
+    }
 
-            .bottomspace{
-                margin-bottom: 20px;
-            }
+    .image-wrapper > img{
+        width: 150px;
+        height: 100px;
+    }
+    .image-wrapper-s > img{
+        width: 200px;
+        height: 160px;
+    }
+    .image-wrapper-thanks > img{
+        width: 320px;
+        height: 240px;
+    }
+ }
 
-            .editorwrapper{
+*{
+    font-family: Meiryo;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
 
-            }
+#liveeditor{
+    margin: 10px;
+}
 
-            .editor{
-                float: left;
-                width: 50%;
-                height: 70%;
-            }
-
-            #livepreview {
-                width: 514px; // 257mm
-                height: 364px; // 182mm
-                // B5サイズ
-             }
-
-            .preview{
-                float: right;
-                width: 50%;
-                background-color: DDDDDD;
-
-            }
-
-            .button{
-                border: 1px solid plum;
-                color: black;
-                line-height: 50px;
-                width: 200px;
-                margin: 20px;
-                background-color: aliceblue;
-                padding: 5px 10px 5px 10px;
-                transition: 0.3s;
-            }
-
-            .button:hover{
-                border: 1px solid mediumpurple;
-                color: white;
-                transition: 0.3s;
-                background-color: mediumpurple;
-            }
-
-            .table.order-table{
-                width: 60%;
-            }
-
-            .table.order-table th{
-                width: 30%;
-            }
-
-            .confirm-btn {
-                width: 208px;
-             }
-
-            .background-translucent {
-                background-image: url('../images/background.jpg');
-                background-size: 100%,100%;
-                background-color:rgba(255,255,255,0.8);
-                background-blend-mode:lighten;
-            }
+.bottomspace{
+    margin-bottom: 20px;
+}
 
 
-            footer{
-                width: 100%;
-                height: 100px;
-                background-color: #174a5c;
-                color: white;
-                text-align: center;
-                margin-top: 100px;
-            }
+.button{
+    border: 1px solid plum;
+    color: black;
+    line-height: 50px;
+    width: 200px;
+    margin: 20px;
+    background-color: aliceblue;
+    padding: 5px 10px 5px 10px;
+    transition: 0.3s;
+}
+
+.button:hover{
+    border: 1px solid mediumpurple;
+    color: white;
+    transition: 0.3s;
+    background-color: mediumpurple;
+}
+
+.table.order-table{
+    width: 60%;
+}
+
+.table.order-table th{
+    width: 30%;
+}
+
+.confirm-btn {
+    width: 208px;
+ }
+
+.background-translucent {
+    background-image: url('../images/background.jpg');
+    background-size: 100%,100%;
+    background-color:rgba(255,255,255,0.8);
+    background-blend-mode:lighten;
+}
+
+
+footer{
+    width: 100%;
+    height: 100px;
+    background-color: #174a5c;
+    color: white;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
+.editorwrapper{
+
+}
+
+.editor{
+    // float: left;
+    // width: 50%;
+    // height: 70%;
+}
+
+// #livepreview {
+//      width: 514px; // 257mm
+//     height: 364px; // 182mm
+//     // B5サイズ
+//  }
+
+.preview{
+    // float: right;
+    // width: 50%;
+    // background-color: DDDDDD;
+}
+
