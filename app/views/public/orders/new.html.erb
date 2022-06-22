@@ -4,9 +4,9 @@
       <div class="col">
         <%= form_with  url: confirm_public_customers_item_orders_path(@item), method: :get do |f| %>
           <h4>支払い方法</h4>
-          <%= f.radio_button :payment_method, "クレジットカード" %>
+          <%= f.radio_button :payment_method, "クレジットカード", {required: true} %>
           <%= f.label :payment_method, "クレジットカード" %>
-          <%= f.radio_button :payment_method, "銀行振込" %>
+          <%= f.radio_button :payment_method, "銀行振込" , {required: true}%>
           <%= f.label :payment_method, "銀行振込" %>
           <p>本来はここでクレジットカード情報や口座情報を入力できるようにしますが<br/>
           ポートフォリオのため割愛しております。</p>

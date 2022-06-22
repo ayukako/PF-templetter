@@ -7,20 +7,18 @@
         display: block;
     }
 
-/* タブレット横置きサイズ（1024px）以下の際に適用される設定 */
-@media screen and (max-width:1024px) {
-    .confirm-btn {
-        width: 208px;
-    }
     #livepreview {
         width: 514px; // 257mm*2
         height: 364px; // 182mm*2
         // B5サイズ
     }
+
+    .confirm-btn {
+        width: 208px;
+    }
     body, html {
         font-size: 1em;
     }
-  }
 /* スマートフォンサイズ（425px）以下の際に適用される設定 */
 @media screen and (max-width:425px) {
 
