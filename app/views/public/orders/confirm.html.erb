@@ -1,7 +1,7 @@
 <div class= "row" >
   <div class= "container">
     <h2>注文情報を確認する</h2>
-    <table class = "table">
+    <table class = "table pc-table">
       <tr>
         <th>封筒</th>
         <th>便箋</th>
@@ -38,8 +38,36 @@
               })
             </script>
         </td>
-        </tr>
+      </tr>
     </table>
+  <dl class = "sp-table">
+    <dt>封筒</dt>
+      <dd><%= @item.envelope.name %>
+        <%= image_tag @item.envelope.image, size: "150x100" %></dd>
+    <dt>便箋</dt>
+      <dd><%= @item.paper.name %>
+        <%= image_tag @item.paper.image, size: "150x100" %></dd>
+    <dt>フォント</dt>
+    <dd><%= @item.font.name %>
+        <%= image_tag @item.font.image, size: "150x100" %></dd>
+    <dt>文章</dt>
+    <dd>
+        <div id="livepreview">
+        <%= simple_format(@item.content.gsub(/\r\n/, "<br>"), style: "background-image: url('/assets/images/#{@item.paper.image.filename.to_s}');font-weight: 700;font-family: #{Font::FONTS[@item.font.name]};", id: "livepreview") %>
+      </div>
+        <script>
+          $('#form_id').submit(function(){
+            var message =  $("#liveeditor").val()
+            var input = $("<input>")
+              .attr("type", "hidden")
+              .attr("name", "message").val(message);
+          $('#form_id').append(input);
+                  // バリデーションチェックや、データの加工を行う
+                  //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
+          })
+        </script>
+    </dd>
+  </dl>
 
 <div class="container">
   <div class="row">

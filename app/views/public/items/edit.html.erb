@@ -12,18 +12,18 @@
   </div>
 </div>
 
-  <div style="editorwrapper">
-    <div class="editor">
+  <div class="row col-lg-12">
+    <div class="editor col-lg-6">
       <p style="background-color:Black; color:white;">入力フォーム</p>
         <form name="js">
           <p>手紙の内容</p>
-          <textarea id="liveeditor" name="item[message]" rows="10" cols="80">
+          <textarea id="liveeditor" name="item[message]" style="width:100%; height:250px;">
             <%= @item.content %>
           </textarea>
         </form>
     </div>
 
-    <div class="preview">
+    <div class="preview col-lg-6">
       <p style="background-color:Black; color:white;">プレビュー</p>
       <p><%= Article.find(@selected_article_id).name %></p>
       <div id="livepreview" class="livepreview"></div>

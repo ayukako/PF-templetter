@@ -1,8 +1,10 @@
-<div>
-  <div class="container">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
     <h2>手紙を作成する</h2>
       <p>テンプレートをお好きなように変更できます。<br>
-      ※最大文字数は４５０字です。</p>
+      プレビュー表示を参考に作成してください。<br>
+      ※文字数の目安は４００字です。</p>
 
         <%= form_with model: @item, url:confirm_public_customers_items_path, id: 'form_id' do |f| %>
           <%= f.collection_select :envelope_id, @envelopes, :id, :name, {prompt: "封筒を選ぶ" } %>
@@ -14,21 +16,21 @@
           <%= f.submit '手紙を一時保存する' %>
           <% else %>
             <button type="button" class="btn btn-outline-primary"><%= link_to "新規登録画面にいく",new_customer_registration_path %></button>
-　        <% end %>
-　      <% end %>
-  </div>
-</div>
-  <div style="editorwrapper">
-    <div class="editor">
+          <% end %>
+        <% end %>
+    </div>
+
+  <div class="row col-lg-12">
+    <div class="editor col-lg-6">
         <p style="background-color:Black; color:white;">入力フォーム</p>
         <form name="js">
             <p>手紙の内容</p>
-            <textarea id="liveeditor" name="htmlbody" rows="10" cols="72">
+            <textarea id="liveeditor" name="htmlbody" style="width:100%; height:250px;">
               <%= @item.article %>
             </textarea>
         </form>
     </div>
-    <div class="preview">
+    <div class="preview col-lg-6">
       <p style="background-color:Black; color:white;">プレビュー</p>
       <div id="livepreview" class="livepreview"></div>
     </div>
@@ -42,3 +44,5 @@
         //バリデーションチェックの結果submitしない場合、return falseすることでsubmitを中止することができる。
     })
   </script>
+    </div>
+</div>
